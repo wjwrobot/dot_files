@@ -1,0 +1,121 @@
+! ******************
+! urxvt config
+! ******************
+
+! Disable Perl extension
+! If you do not use the Perl extension features, you can improve the security
+! and speed by disabling Perl extensions completely. 
+!URxvt.perl-ext:
+!URxvt.perl-ext-common:
+
+! Font spacing
+!URxvt.letterSpace: -1
+
+! -- Fonts -- !
+URxvt*font: xft:Hack Nerd Font:size=18, xft:WenQuanYi Micro Hei Mono:size=18:style=Regular, xft:FontAwesome:size=18,xft:Wuncon Siji:pixelsize=18, xos4 Terminess Powerline:size=18:style=Regular, xft:Hack:size=18
+
+!URxvt*font: xft:Terminusicons2Mono:style=Regular
+
+! Input method (enable chinese character input on urxvt)
+URxvt*inputMethod: ibus
+URxvt*preeditType: OverTheSpot
+
+! scrollbar
+URxvt*scrollBar: false
+
+! True transparency
+!URxvt*depth: 32
+!URxvt*background: [50]#000000
+
+! Fake transparency
+! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
+urxvt*transparent: true
+urxvt*shading: 40
+
+! Scrollbar style - rxvt (default), plain (most compact), next, or xterm
+!URxvt.scrollstyle: plain
+
+! urlLauncher 
+URxvt*urlLauncher: firefox
+
+! Background color
+URxvt*background: black
+!URxvt*background: #1B1B1B
+
+! Font color
+URxvt*foreground: white
+!URxvt*foreground: #00FF00
+
+! Other colors
+URxvt*color0: black
+!URxvt*color1: red3
+URxvt*color1: #CD0000
+URxvt*color2: green3
+!URxvt*color3: yellow3
+URxvt*color3: #C4A000
+URxvt*color4: blue2
+!URxvt*color4: #3465A4
+URxvt*color5: magenta3
+URxvt*color6: cyan3
+URxvt*color7: gray90
+URxvt*color8: grey50
+URxvt*color9: red
+URxvt*color10: green
+URxvt*color11: yellow
+!URxvt*color12: blue
+URxvt*color12: #3465A4
+URxvt*color13: magenta
+URxvt*color14: cyan
+URxvt*color15: white
+
+
+! ******************
+! /urxvt config
+! examples
+! ******************
+! URxvt*termName:                       string
+! URxvt*geometry:                       geometry
+! URxvt*chdir:                          string
+! URxvt*reverseVideo:                   boolean
+! URxvt*loginShell:                     boolean
+! URxvt*jumpScroll:                     boolean
+! URxvt*skipScroll:                     boolean
+! URxvt*pastableTabs:                   boolean
+! URxvt*scrollstyle:                    mode
+! URxvt*scrollBar:                      boolean
+! URxvt*scrollBar_right:                boolean
+! URxvt*scrollBar_floating:             boolean
+! URxvt*scrollBar_align:                mode
+! URxvt*thickness:                      number
+! URxvt*scrollTtyOutput:                boolean
+! URxvt*scrollTtyKeypress:              boolean
+! URxvt*scrollWithBuffer:               boolean
+! URxvt*inheritPixmap:                  boolean
+! URxvt*transparent:                    boolean
+! URxvt*tintColor:                      color
+! URxvt*shading:                        number
+! URxvt*blurRadius:                     HxV
+! URxvt*fading:                         number
+! URxvt*fadeColor:                      color
+! URxvt*utmpInhibit:                    boolean
+! URxvt*urgentOnBell:                   boolean
+! URxvt*visualBell:                     boolean
+! URxvt*mapAlert:                       boolean
+! URxvt*meta8:                          boolean
+! URxvt*mouseWheelScrollPage:           boolean
+! URxvt*tripleclickwords:               boolean
+! URxvt*insecure:                       boolean
+! URxvt*cursorUnderline:                boolean
+! URxvt*cursorBlink:                    boolean
+! URxvt*pointerBlank:                   boolean
+! URxvt*background:                     color
+! URxvt*foreground:                     color
+! URxvt*color0:                         color
+! URxvt*color1:                         color
+! URxvt*color2:                         color
+! URxvt*color3:                         color
+! URxvt*color4:                         color
+! URxvt*color5:                         color
+
+! ******************
+
