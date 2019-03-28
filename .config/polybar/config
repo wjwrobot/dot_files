@@ -56,9 +56,9 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-2 = siji:pixelsize=13;1
 font-2 = "Wuncon Siji"
 font-3 = FontAwesome:style=Regular:pixelsize=13;1
-modules-left = i3 
+modules-left = i3 wlan
 modules-center = xwindow
-modules-right = time battery pulseaudio memory date
+modules-right = time battery pulseaudio memory date weather
 
 tray-position = right
 tray-padding = 2
@@ -217,7 +217,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = ""
 format-prefix-foreground = #4bffdc
 ;format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
@@ -229,8 +229,10 @@ interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
+;format-connected =  <label-connected>
 format-connected-underline = #9f78e1
-label-connected = %essid%
+;label-connected = %essid% :  %upspeed%  %downspeed% 
+label-connected =  %upspeed%  %downspeed%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -238,12 +240,19 @@ format-disconnected =
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
+ramp-signal-0 = 😱
+ramp-signal-1 = 😠
+ramp-signal-2 = 😒
+ramp-signal-3 = 😊
+ramp-signal-4 = 😃
+ramp-signal-5 = 😈
+ramp-signal-foreground = #4bffdc
+;ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
@@ -302,7 +311,7 @@ label-volume-underline = #9f78e1
 ;label-volume-foreground = ${root.foreground}
 label-volume-foreground = #9f78e1
 
-label-muted =  muted 
+label-muted =  muted
 ;label-muted = 🔇 muted
 label-muted-underline = #9f78e1
 label-muted-foreground = #9f78e1
@@ -363,7 +372,8 @@ full-at = 100
 format-charging =  <ramp-capacity> <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
+;format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
@@ -451,6 +461,13 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+
+[module/weather]
+type = custom/script
+exec = python ~/.config/polybar/scripts/weather.py
+interval = 120
+format-underline = #ffb86c
+format-prefix = %{T3}%{T-}
 
 [settings]
 screenchange-reload = true

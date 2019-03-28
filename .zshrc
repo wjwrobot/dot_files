@@ -117,7 +117,7 @@ compinit
 # End of lines added by compinstall
 
 # PATH
-export PATH=$PATH:/opt/anaconda3/bin
+export PATH=$PATH:/opt/anaconda3/bin:~/.emacs.d/bin
 
 # Load my alias file
 if [ -f ~/.aliases ]; then

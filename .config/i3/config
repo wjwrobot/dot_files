@@ -49,6 +49,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec urxvt 
+#bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -215,6 +216,8 @@ bindsym $mod+Ctrl+r exec --no-startup-id urxvt -e ranger
 bindsym $mod+Ctrl+f exec --no-startup-id firefox
 # ncmpcpp (mpd client)
 bindsym $mod+Ctrl+n exec --no-startup-id urxvt -e ncmpcpp
+# termite
+bindsym $mod+Ctrl+t exec --no-startup-id termite
 
 # Pulse Audio controls
 bindsym $mod+F12 exec --no-startup-id pactl set-sink-volume 0 +10% #increase sound volume
@@ -255,4 +258,14 @@ exec --no-startup-id urxvt
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # border / titlebar
-default_border pixel 1
+default_border pixel 3 
+
+# gaps
+#gaps inner 10
+#gaps outer <px>
+#gaps horizontal <px>
+#gaps vertical <px>
+#gaps top <px>
+#gaps right <px>
+#gaps bottom <px>
+#gaps left <px>

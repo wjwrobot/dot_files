@@ -23,6 +23,10 @@ URxvt*preeditType: OverTheSpot
 ! scrollbar
 URxvt*scrollBar: false
 
+! disable the scrollback buffer for the secondary screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
 ! True transparency
 !URxvt*depth: 32
 !URxvt*background: [50]#000000
@@ -40,7 +44,7 @@ URxvt*urlLauncher: firefox
 
 ! Background color
 URxvt*background: black
-!URxvt*background: #1B1B1B
+!URxvt*background: #3f3f3f
 
 ! Font color
 URxvt*foreground: white
