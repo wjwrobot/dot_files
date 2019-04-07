@@ -35,10 +35,11 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-Plugin 'SirVer/ultisnips'	" snippets
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+"Plugin 'SirVer/ultisnips'	" snippets
+"let g:UltiSnipsExpandTrigger = '<tab>'
+"let g:UltiSnipsJumpForwardTrigger = '<tab>'
+"let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
 " Airline
 "Plugin 'vim-airline/vim-airline'
 "Plugin 'vim-airline/vim-airline-themes'
@@ -116,3 +117,6 @@ set mouse=n
 
 " NERDTree automatically open when vim starts up
 "autocmd vimenter * NERDTree
+
+" Enable syntax highlight for markdown file
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown

@@ -226,9 +226,9 @@ label = %percentage_used%%
 [module/wlan]
 type = internal/network
 interface = wlp3s0
-interval = 3.0
+interval = 2.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected> <ramp-signal>
 ;format-connected =  <label-connected>
 format-connected-underline = #9f78e1
 ;label-connected = %essid% :  %upspeed%  %downspeed% 
@@ -251,7 +251,7 @@ ramp-signal-2 = 😒
 ramp-signal-3 = 😊
 ramp-signal-4 = 😃
 ramp-signal-5 = 😈
-ramp-signal-foreground = #4bffdc
+ramp-signal-foreground = #9f78e1
 ;ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
@@ -465,7 +465,7 @@ menu-2-1-exec = menu-open-0
 [module/weather]
 type = custom/script
 exec = python ~/.config/polybar/scripts/weather.py
-interval = 120
+interval = 600
 format-underline = #ffb86c
 format-prefix = %{T3}%{T-}
 
