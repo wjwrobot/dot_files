@@ -8,12 +8,15 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+ZSH_THEME="my_lambda"
 
 # ---------------------------------------------
 # 					my configure
 # prompt
 # ----------------------------------------------
+
+#PS1="%{%F{red}%}%n%{%f%}@%{%F{blue}%}%m %{%F{yellow}%}%~ %{$%f%}%% "
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -125,10 +128,10 @@ if [ -f ~/.aliases ]; then
 fi
 
 # Enable powerline in zsh
-powerline-daemon -q
-. /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+#powerline-daemon -q
+#. /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # ibus
-export GTK_IM_MODULE=xim
-export XMODIFIERS=@im=ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
 export QT_IM_MODULE=ibus
