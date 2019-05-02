@@ -1,0 +1,22 @@
+* Blogs                                                              :elfeed:
+** Programming                                                   :dev:
+*** [[http://norvig.com/rss-feed.xml][Peter Norvig]]
+*** [[http://nullprogram.com/feed][nullprogram]]
+*** Emacs                                                       :emacs:
+**** entry-title: \(emacs\|org-mode\)
+**** http://planet.emacsen.org/atom.xml
+** Magazine                                                      :magazine:
+*** [[http://www.quantamagazine.org/feed/][Quanta Magazine]]
+** Machine learning                                              :ml:
+*** [[http://googleresearch.blogspot.com/atom.xml][Google AI Blog]]
+*** [[https://blog.openai.com/rss/][OpenAI ]]
+*** [[https://deepmind.com/blog/feed/basic/][DeepMind ]]
+*** [[http://karpathy.github.io/feed.xml][Andrej Karpathy blog]]
+*** [[http://bair.berkeley.edu/blog/feed.xml][The Berkeley AI Research Blog]]
+*** [[https://www.lyrn.ai/feed/][Lyrn.AI]]
+*** [[http://distill.pub/rss.xml][Distill]]
+*** [[http://colah.github.io/rss.xml][colah's blog]]
+*** [[http://timvieira.github.io/blog/atom.xml][Graduate Descent]]
+** math                                                          :math:
+*** [[http://ncatlab.org/nlab/atom_with_content][nLab]]
+*** [[http://terrytao.wordpress.com/feed/][What's new]]

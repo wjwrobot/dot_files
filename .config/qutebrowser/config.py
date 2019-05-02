@@ -253,8 +253,8 @@ c.colors.tabs.selected.even.bg = base05
 
 
 ## -------------------------------------------------------------
-c.fonts.completion.category = "bold 18:pt DejaVu Sans"
-c.fonts.completion.entry = "18pt DejaVu Sans"
+c.fonts.completion.category = "bold 20:pt DejaVu Sans"
+c.fonts.completion.entry = "20pt DejaVu Sans"
 c.fonts.debug_console = "16pt DejaVu Sans"
 c.fonts.downloads = "16pt DejaVu Sans"
 c.fonts.hints = "bold 15pt DejaVu Sans"
@@ -269,4 +269,6 @@ c.fonts.tabs = "20pt DejaVu Sans"
 c.content.proxy = "http://localhost:8118"
 
 c.zoom.default = "175%"
+
+c.auto_save.session = True
 ## --------------------------------------------------------
