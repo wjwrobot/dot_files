@@ -8,15 +8,10 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="agnoster"
+#ZSH_THEME="example"
 ZSH_THEME="my_lambda"
-
-# ---------------------------------------------
-# 					my configure
-# prompt
-# ----------------------------------------------
-
-#PS1="%{%F{red}%}%n%{%f%}@%{%F{blue}%}%m %{%F{yellow}%}%~ %{$%f%}%% "
+#ZSH_THEME="agnoster"
+#ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -95,9 +90,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -106,6 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -120,16 +113,13 @@ compinit
 # End of lines added by compinstall
 
 # PATH
-export PATH=$PATH:/opt/anaconda3/bin:~/.emacs.d/bin
+#export PATH=$PATH:~/.emacs.d/bin
+export PATH=$PATH:~/Git/doom/bin
 
 # Load my alias file
 if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
-
-# Enable powerline in zsh
-#powerline-daemon -q
-#. /usr/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # ibus
 export GTK_IM_MODULE=ibus
