@@ -1,12 +1,43 @@
 set number
 set showmatch
-
+let python_highlight_all=1
+"------------------------------------------------------------ 
+"------------------------------------------------------------ 
+"                         PLUGIN MANAGER
 " vim-plug package manager
 call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
+Plug 'tpope/vim-surround'
+"------------------------------ 
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+"------------------------------ 
+" Async Autocompletion
+" https://github.com/prabirshrestha/asyncomplete.vim
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"------------------------------ 
+" Vim Lsp
+" https://github.com/prabirshrestha/vim-lsp
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+"------------------------------ 
+" Another Completion Plugin 
+" see https://github.com/Shougo/deoplete.nvim
+"------------------------------ 
+" Asynchronous Linting and Make Framework
+"Plug 'neomake/neomake'
+"------------------------------ 
+" Code Fold
+"Plug 'tmhedberg/SimpylFold'
+"------------------------------ 
 call plug#end()
 
-" -----------------------------------------------------
+" see http://yannesposito.com/Scratch/en/blog/Vim-as-IDE/
+"------------------------------------------------------------ 
+"------------------------------------------------------------ 
+"                         COLOR SCHEME
 " theme: https://github.com/joshdick/onedark.vim
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -23,8 +54,18 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
-" ------------------------------------------------------
+"---------------
 colorscheme onedark
+"set background=dark
+"colorscheme solarized
+
+"------------------------------------------------------------ 
+"------------------------------------------------------------
+"               CODE FOLDING
+set foldmethod=indent
+set foldlevel=99
+"------------------------------------------------------------ 
+"               MISC
 "syntax on
 "filetype indent plugin on
 
@@ -37,11 +78,85 @@ set incsearch
 set smartindent
 "set smarttab
 " Tab length
-set tabstop=4
+set ts=4
+set expandtab  
 set shiftwidth=4
-"set expandtab
-
+set expandtab
+set cursorline
+set colorcolumn=80
 " Enable mouse wheel scrolling
 set mouse=n
 " Or also visual mode
 "set mouse=a
+set encoding=utf-8
+
+"------------------------------------------------------------
+"------------------------------------------------------------
+"               PYTHON PEP 8
+"au BufNewFile,BufRead *.py
+"    \ set tabstop=4
+"    \ set softtabstop=4
+"    \ set shiftwidth=4
+"    \ set textwidth=79
+"    \ set expandtab
+"    \ set autoindent
+"    \ set fileformat=unix
+
+"------------------------------------------------------------
+"               WEB DEVELOPMENT
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+    \ set expandtab
+
+"------------------------------------------------------------
+"               FLAG UNNECESSARY WHITESPACE
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"------------------------------------------------------------
+"------------------------------------------------------------
+"               LSP FOR PYTHON 
+" see more details: https://github.com/prabirshrestha/vim-lsp
+" Register pyls Python language server.
+" MUST DO 'pip install python-language-server'
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+"------------------------------------------------------------
+"               LSP FOR C/C++
+"see https://github.com/MaskRay/ccls/wiki/vim-lsp
+" Register ccls C++ lanuage server.
+" MUST DO 'yay -S ccls-git'
+if executable('ccls')
+   au User lsp_setup call lsp#register_server({
+      \ 'name': 'ccls',
+      \ 'cmd': {server_info->['ccls']},
+      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
+      \ 'initialization_options': {'cache': {'directory': '/tmp/ccls/cache' }},
+      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
+      \ })
+endif
+"------------------------------------------------------------
+"------------------------------------------------------------
+"               CONFIGURE 'asyncomplete' PLUGIN 
+"Tab completion
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+"Auto popup menu
+let g:asyncomplete_auto_popup = 1
+"------------------------------------------------------------
+"               CONFIGURE 'vim-lsp'
+"see https://github.com/MaskRay/ccls/wiki/vim-lsp
+" Key bindings for vim-lsp.
+nn <silent> <M-d> :LspDefinition<cr>
+nn <silent> <M-r> :LspReferences<cr>
+nn <f2> :LspRename<cr>
+nn <silent> <M-a> :LspWorkspaceSymbol<cr>
+nn <silent> <M-l> :LspDocumentSymbol<cr>
+"------------------------------------------------------------
