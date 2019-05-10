@@ -531,6 +531,7 @@ sudo pacman -S ranger
 
 ```bash
 sudo pacman -S tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 ### Build package
@@ -690,6 +691,19 @@ Put the content above to the file `~/.ssh/config`.
 mpd + ncmpcpp + cantata + mps-youtube + youtube-dl + mpv
 
 ### Text Editor
+#### Vim & Neovim & as IDE
+vim plugin manager: vim-plug 
+code-searching tool: the_silver_searcher (**ag**)
+Plugins for making a IDE: [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+```bash
+sudo pacman -S vim neovim
+sudo pacman -S the_silver_searcher
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sudo pacman -S pip
+sudo pip install python-language-server
+yay -S ccls-git
+```
 
 chemacs
 ```bash
@@ -715,6 +729,12 @@ make install
 emacs --with-profile doom &
 ```
 
+Use Spacemacs with chemacs
+```bash
+mkdir -p ~/Git/spacemacs
+git clone https://github.com/syl20bnr/spacemacs.git ~/Git/spacemacs
+```
+
 Doom-Emacs
 ```
 git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d
@@ -729,13 +749,13 @@ sudo pacman -S zathura zathura-pdf-poppler
 ```
 
 ### Input Method
-```
+```bash
 sudo pacman -S ibus ibus-rime
 ```
-​ Change the default chinese input method to simplified, within the file *~/.config/ibus/rime/build/luna_pinyin.schema.yaml* put *reset: 1* underneath the *name: simplification*.
+Change the default chinese input method to simplified, within the file *~/.config/ibus/rime/build/luna_pinyin.schema.yaml* put *reset: 1* underneath the *name: simplification*.
 
 ### SwitchyOmega
-​ In auto switch profile, in Rule list confifug, select AutoProxy, and put the following content into Rule list url.
+In auto switch profile, in Rule list confifug, select AutoProxy, and put the following content into Rule list url.
 ```
 https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt
 ```
