@@ -1,8 +1,8 @@
 set number
 set showmatch
 let python_highlight_all=1
-"------------------------------------------------------------ 
-"------------------------------------------------------------ 
+"------------------------------------------------------------
+"------------------------------------------------------------
 "                         PLUGIN MANAGER
 " vim-plug package manager
 call plug#begin('~/.vim/plugged')
@@ -89,6 +89,12 @@ set mouse=n
 " Or also visual mode
 "set mouse=a
 set encoding=utf-8
+set showcmd
+"------------------------------------------------------------
+"               KEYMAP
+"it is need for map <Space> key to leader key
+nnoremap <Space> <Nop>
+let mapleader=" "       "change leader key to <Space> key
 
 "------------------------------------------------------------
 "------------------------------------------------------------
@@ -154,9 +160,9 @@ let g:asyncomplete_auto_popup = 1
 "               CONFIGURE 'vim-lsp'
 "see https://github.com/MaskRay/ccls/wiki/vim-lsp
 " Key bindings for vim-lsp.
-nn <silent> <M-d> :LspDefinition<cr>
-nn <silent> <M-r> :LspReferences<cr>
+nn <silent> <Leader>d :LspDefinition<cr>
+nn <silent> <Leader>r :LspReferences<cr>
 nn <f2> :LspRename<cr>
-nn <silent> <M-a> :LspWorkspaceSymbol<cr>
-nn <silent> <M-l> :LspDocumentSymbol<cr>
+nn <silent> <Leader>a :LspWorkspaceSymbol<cr>
+nn <silent> <Leader>l :LspDocumentSymbol<cr>
 "------------------------------------------------------------
