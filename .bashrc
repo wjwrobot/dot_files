@@ -13,3 +13,5 @@ if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
 
+# dotnet
+export DOTNET_CLI_TELEMETRY_OPTOUT=1

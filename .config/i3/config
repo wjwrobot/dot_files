@@ -203,7 +203,7 @@ bindsym $mod+Shift+x exec i3lock -i ~/.dotfiles/assets/wallpaper.png
 #bindsym $mod+shift+x exec betterlockscreen --lock dim
 
 # Ranger file manager
-bindsym $mod+Ctrl+r exec --no-startup-id urxvt -e ranger
+bindsym $mod+Ctrl+r exec --no-startup-id termite -e ranger
 # Firefox
 bindsym $mod+Ctrl+f exec --no-startup-id firefox
 # ncmpcpp (mpd client)
@@ -219,8 +219,8 @@ bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume 0 -10%
 bindsym $mod+F10 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # ALSA Audoi controls
-#bindsym $mod+F12 exec amixer -q set Master 10%+ unmute #increase sound volume
-#bindsym $mod+F11 exec amixer -q set Master 10%- unmute  #decrease sound volume
+#bindsym $mod+F12 exec amixer -q set Master 5%+ unmute #increase sound volume
+#bindsym $mod+F11 exec amixer -q set Master 5%- unmute  #decrease sound volume
 #bindsym $mod+F10 exec amixer -q set Master toggle # mute sound
 
 

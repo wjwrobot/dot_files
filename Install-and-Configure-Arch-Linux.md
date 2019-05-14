@@ -521,10 +521,9 @@ git config --global http.proxy 127.0.0.1:8118
 
 ### File manager
 
-Visual file manafer
-
+ranger (use w3m to preview image)
 ```bash
-sudo pacman -S ranger
+sudo pacman -S ranger w3m
 ```
 
 ### tmux & tmux-resurrect
@@ -690,6 +689,11 @@ Put the content above to the file `~/.ssh/config`.
 
 mpd + ncmpcpp + cantata + mps-youtube + youtube-dl + mpv
 
+### Fuzzy Finder
+```bash
+sudo pacman -S fzf
+```
+
 ### Text Editor
 #### Vim & Neovim & as IDE
 vim plugin manager: vim-plug 
@@ -736,11 +740,22 @@ git clone https://github.com/syl20bnr/spacemacs.git ~/Git/spacemacs
 ```
 
 Doom-Emacs
-```
+```bash
 git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d
 ~/.emacs.d/bin/doom quickstart
 cd .emacs.d
 make install
+```
+
+Emacs
+Configure lsp-mode and pyls-ms (Microsoft Python Language Server)
+```bash
+sudo pacman -S dotnet-sdk
+mkdir ~/build
+cd build
+git clone https://github.com/Microsoft/python-language-server.git
+cd python-language-server/src/LanguageServer/Impl
+dotnet build -c Release
 ```
 
 ### Pdf Reader
@@ -777,3 +792,4 @@ umount /dev/sdb1
 
 1. [Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
 2. [How do I start tensorflow docker jupyter notebook](https://stackoverflow.com/questions/33636925/how-do-i-start-tensorflow-docker-jupyter-notebook#)
+3. [Configure Emacs, lsp-mode and pyls-ms](https://vxlabs.com/2018/11/19/configuring-emacs-lsp-mode-and-microsofts-visual-studio-code-python-language-server/)

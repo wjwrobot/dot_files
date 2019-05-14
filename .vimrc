@@ -1,3 +1,4 @@
+set nocompatible
 set number
 set showmatch
 let python_highlight_all=1
@@ -8,6 +9,13 @@ let python_highlight_all=1
 call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-surround'
+"------------------------------ 
+" fuzzy finder
+Plug '/usr/bin/fzf' " has installed in system
+Plug 'junegunn/fzf.vim'
+"------------------------------ 
+" Ag
+"Plug 'mileszs/ack.vim'
 "------------------------------ 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -22,6 +30,14 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " https://github.com/prabirshrestha/vim-lsp
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
+"------------------------------ 
+" LSP support for vim and neovim
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
+"
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 "------------------------------ 
 " Another Completion Plugin 
 " see https://github.com/Shougo/deoplete.nvim
@@ -90,12 +106,21 @@ set mouse=n
 "set mouse=a
 set encoding=utf-8
 set showcmd
+set laststatus=2
+" Let buffer be switched to another one without requiring to save it first
+set hidden
+
+" Zsh like <Tab> completion in command mode
+set wildmenu
+set wildmode=full
+" Show ruler
+set ruler
 "------------------------------------------------------------
 "               KEYMAP
 "it is need for map <Space> key to leader key
 nnoremap <Space> <Nop>
 let mapleader=" "       "change leader key to <Space> key
-
+inoremap jj <Esc>
 "------------------------------------------------------------
 "------------------------------------------------------------
 "               PYTHON PEP 8
