@@ -3,4 +3,8 @@ alias jupy='jupyter notebook \
   --NotebookApp.allow_origin='https://colab.research.google.com' \
   --port=8888 \
   --NotebookApp.port_retries=0'
+alias ec='emacsclient -t'
+alias nv='nvim'
+alias sp='emacs --with-profile spacemacs &'
+alias em='emacs --with-profile emacs &'
 
