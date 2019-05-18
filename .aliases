@@ -7,4 +7,5 @@ alias ec='emacsclient -t'
 alias nv='nvim'
 alias sp='emacs --with-profile spacemacs &'
 alias em='emacs --with-profile emacs &'
-
+alias jn='jupyter notebook'
+alias ra='ranger'

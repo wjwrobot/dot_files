@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# from https://github.com/Anachron/i3blocks
 # Left click
 if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
   amixer -q sset Master 5%+

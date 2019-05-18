@@ -148,7 +148,7 @@
        ;;vala              ; GObjective-C
 
        :email
-       (mu4e +gmail)       ; WIP
+       ;;(mu4e +gmail)       ; WIP
        ;;notmuch             ; WIP
        ;;(wanderlust +gmail) ; WIP
 

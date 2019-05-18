@@ -762,6 +762,10 @@ dotnet build -c Release
 ```bash
 sudo pacman -S zathura zathura-pdf-poppler
 ```
+### Sync tool
+```bash
+sudo pacman -S syncthing
+```
 
 ### Input Method
 ```bash
@@ -787,6 +791,10 @@ mount /dev/sdb1 /mnt/media/usb
 ```
 ```bash
 umount /dev/sdb1
+```
+### Cron
+```bash
+sudo pacman -S cronie
 ```
 ## References
 

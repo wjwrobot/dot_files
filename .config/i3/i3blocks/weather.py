@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import json
 import urllib
@@ -17,10 +17,13 @@ def main():
         desc = weather['weather'][0]['description'].capitalize()
         icons = {"Thunderstorm":"", "Drizzle":"", "Rain":"", "Snow":"", "Mist":"", "Smoke":"", "Haze":"", "Dust":"", "Fog":"", "Sand":"", "Dust":"", "Ash":"", "Squall":"", "Tornado":"", "Clear":"", "Clouds":"", "Broken clouds":""}
         icon = icons.get (desc, '')
+        if (icon):
+            icon += " "
         temp = int(float(weather['main']['temp']))
-        return '{}  {} {}°C'.format(icon, desc, temp)
+        #print('{}{} {}°C'.format(icon, desc, temp))
+        print('{}{}°C'.format(icon, temp))
     except:
-        return ''
+        exit
 
 if __name__ == "__main__":
-    print(main())
+    main()
