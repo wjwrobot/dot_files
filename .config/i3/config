@@ -162,6 +162,7 @@ bindsym $mod+r mode "resize"
 
 #------------------------------------------------------------ 
 ## COLORS
+set $darkblue #282c34
 set $red #cc241d
 set $green #98971a
 set $yellow #d79921
@@ -173,6 +174,7 @@ set $white #ffffff
 
 # class                 border|backgr|text|indicator|child_border
 client.focused          $green $blue $white $red $purple
+#client.focused          $green $blue $white $red $darkblue
 client.unfocused        $darkgray $darkgray $yellow $yellow $blue
 #client.focused_inactive $darkgray $darkgray $yellow $yellow $blue
 client.urgent           $red $red $white $red $red
@@ -185,13 +187,15 @@ bar {
 	position top
 
 	colors {
-		background #000000
+		#background #000000
+        background $darkblue 
 		statusline #0aeb7e
 		separator #666666
 
 		focused_workspace  #4c7899 #285577 #ffffff
 		active_workspace   #333333 #5f676a #ffffff
-		inactive_workspace #333333 #222222 #888888
+		inactive_workspace $darkblue $darkblue #888888
+		#inactive_workspace #333333 #222222 #888888
 		urgent_workspace   #2f343a #900000 #ffffff
 		binding_mode       #2f343a #900000 #ffffff
 	    }	
@@ -236,7 +240,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previo
 
 # Screenshots
-bindsym Print exec --no-startup-id scrot
+bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/'
 
 # Automatically putting clients on specific workspaces
 #assign [class="Firefox"] $ws2
@@ -248,9 +252,9 @@ exec --no-startup-id termite
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # border / titlebar
-default_border pixel 3
+default_border pixel 4
 
-#for_window [class="termite"] border pixel 10
+#for_window [class="Termite"] border pixel 5
 #new_window pixel 4
 
 # gaps
@@ -274,7 +278,7 @@ set $mode_gaps_inner Inner Gaps: Use j/k (Shift for global)
 set $mode_gaps_normal Normal mode a/0
 set $mode_borde Border: j/k
 bindsym $mod+q mode "$mode_gaps"
-gaps inner 10
+gaps inner 6
 #gaps outer 30
         
 mode "$mode_gaps" {

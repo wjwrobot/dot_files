@@ -121,13 +121,3 @@ if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
 
-# ibus
-export GTK_IM_MODULE=ibus
-export XMODIFIERS="@im=ibus"
-export QT_IM_MODULE=ibus
-
-# dotnet
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-
-export EDITOR=nvim
-export BROWSER="qutebrowser"

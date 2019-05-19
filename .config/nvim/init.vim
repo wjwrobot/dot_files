@@ -1,5 +1,5 @@
 set nocompatible
-set number
+set number relativenumber
 set showmatch
 let python_highlight_all=1
 "------------------------------------------------------------
@@ -51,6 +51,13 @@ Plug 'prabirshrestha/vim-lsp'
 "------------------------------ 
 " Code Fold
 "Plug 'tmhedberg/SimpylFold'
+"------------------------------ 
+" Latex
+Plug 'lervag/vimtex'
+"------------------------------ 
+" Snippets
+Plug 'sirver/ultisnips'
+"Plug 'honza/vim-snippets'
 "------------------------------ 
 call plug#end()
 
@@ -119,12 +126,17 @@ set wildmenu
 set wildmode=full
 " Show ruler
 set ruler
+set clipboard=unnamedplus
 "------------------------------------------------------------
 "               KEYMAP
 "it is need for map <Space> key to leader key
 nnoremap <Space> <Nop>
 let mapleader=" "       "change leader key to <Space> key
 inoremap jj <Esc>
+
+" Copy selected text to system clipboard (requires gvim/nvim/vim-x11 installed):
+	vnoremap <C-c> "+y
+	map <C-p> "+P
 "------------------------------------------------------------
 "------------------------------------------------------------
 "               PYTHON PEP 8
@@ -194,4 +206,22 @@ nn <silent> <Leader>r :LspReferences<cr>
 nn <f2> :LspRename<cr>
 nn <silent> <Leader>a :LspWorkspaceSymbol<cr>
 nn <silent> <Leader>l :LspDocumentSymbol<cr>
+"------------------------------------------------------------
+"               CONFIGURE FOR LATEX
+""must to install 'latexmk'
+"let g:tex_flavor='latex'
+"let g:vimtex_view_method='zathura'
+"let g:vimtex_quickfix_mode=0
+"set conceallevel=1
+"let g:tex_conceal='abdmg'
+"------------------------------------------------------------
+"               CONFIGURE FOR UltiSnips
+"must 'pip3 install --user --upgrade pynvim'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+"------------------------------------------------------------
+"               MISC
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
 "------------------------------------------------------------

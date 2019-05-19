@@ -1,0 +1,4 @@
+#!/bin/bash
+memory=$(free -h | grep Mem | awk -F ' ' '{print$7}' | tr -d 'i')
+echo "$memory"
+
