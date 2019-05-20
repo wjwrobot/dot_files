@@ -3,9 +3,9 @@ title: Install and Configure Arch Linux
 date: 2019-05-05 19:53:04
 updated:
 tags:
-- Arch Linux 
+- Arch Linux
 - Linux
-categories: 
+categories:
 - Linux
 mathjax:
 ---
@@ -119,7 +119,7 @@ my partition plan for system with 4G RAM and 500G storage device
 
 ### Format the partitions
 
-Once the partitions have been created, each must be formatted with an appropriate **file system**. 
+Once the partitions have been created, each must be formatted with an appropriate **file system**.
 
 ```bash
 mkfs.fat -F32 /dev/sda1
@@ -195,7 +195,7 @@ arch-chroot /mnt
 ### Configure wifi
 
 ```bash
-pacman -S dialog wpa_suppliant 
+pacman -S dialog wpa_suppliant
 wifi-menu
 ```
 
@@ -221,7 +221,7 @@ Uncomment **en_US.UTF-8 UTF-8** and other needed **locales** in **/etc/locale.ge
 locale-gen
 ```
 
-Set the **LANG** variable in **/etc/locale.conf** 
+Set the **LANG** variable in **/etc/locale.conf**
 
 ```
 LANG=en_US.UTF-8
@@ -285,7 +285,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
 #### Generated grub.cfg
 
-Use the **grub-mkconfig** tool to generate **/boot/grub/grub.cfg** 
+Use the **grub-mkconfig** tool to generate **/boot/grub/grub.cfg**
 
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -338,7 +338,8 @@ fc-list
 Download fonts
 
 ```bash
-sudo pacman -S wqy-microhei ttf-dejavu 
+sudo pacman -S wqy-microhei ttf-dejavu
+yay -S ttf-symbola
 ```
 
 or download packages manually and put font files to the **.local/share/fonts/** directory.
@@ -355,7 +356,7 @@ echo "FONT=sun12x22\nFONT_MAP=8859-2" > /etc/vconsole.conf
 ### Install Xorg
 
 ```bash
- sudo pacman -S xorg-server xorg-xinit 
+ sudo pacman -S xorg-server xorg-xinit
 ```
 
 configure **~/.xinitrc** file
@@ -595,7 +596,7 @@ Download **nvidia-docker**
 yay -S nvidia-docker
 ```
 
-Pull latest **tensorflow-gpu** 
+Pull latest **tensorflow-gpu**
 
 ```bash
 docker pull tensorflow/tensorflow:latest-gpu-py3
@@ -609,7 +610,7 @@ docker run --runtime=nvidia -it tensorflow/tensorflow:latest-gpu-py3 bash
 
 (**Note:** `nvidia-docker` v1 uses the `nvidia-docker` alias, where v2 uses `docker --runtime=nvidia`.)
 
-Docker Usage 
+Docker Usage
 
 ```bash
 docker ps -a	#check all containers
@@ -619,7 +620,7 @@ docker images	#check all images
 docker rmi $(docker images -q) #delete all images
 docker rmi node_name	#delete node(image)
 
-docker info		
+docker info
 docker version
 
 # create a container named tf and run it
@@ -696,7 +697,7 @@ sudo pacman -S fzf
 
 ### Text Editor
 #### Vim & Neovim & as IDE
-vim plugin manager: vim-plug 
+vim plugin manager: vim-plug
 code-searching tool: the_silver_searcher (**ag**)
 Plugins for making a IDE: [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
 ```bash
@@ -704,9 +705,10 @@ sudo pacman -S vim neovim
 sudo pacman -S the_silver_searcher
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-sudo pacman -S pip
-sudo pip install python-language-server
+sudo pacman -S pip3
+sudo pip3 install python-language-server
 yay -S ccls-git
+pip3 install --user --upgrade pynvim
 ```
 
 chemacs
@@ -796,8 +798,29 @@ umount /dev/sdb1
 ```bash
 sudo pacman -S cronie
 ```
+### Draw figures
+```bash
+sudo pacman -S inkscape
+```
+### Color Schedule
+```bash
+sudo pacman -S python-pywal
+```
+### X hotkey daemon
+```bash
+sudo pacman -S sxhkd
+```
+### Menu
+```bash
+sudo pacman -S dmenu
+```
+### Notification
+```bash
+sudo pacman -S dunst
+```
 ## References
 
 1. [Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
 2. [How do I start tensorflow docker jupyter notebook](https://stackoverflow.com/questions/33636925/how-do-i-start-tensorflow-docker-jupyter-notebook#)
 3. [Configure Emacs, lsp-mode and pyls-ms](https://vxlabs.com/2018/11/19/configuring-emacs-lsp-mode-and-microsofts-visual-studio-code-python-language-server/)
+4. [How I draw figures for my mathematical lecture notes using Inkscape](https://castel.dev/post/lecture-notes-2/)

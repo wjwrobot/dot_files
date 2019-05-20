@@ -121,3 +121,8 @@ if [ -f ~/.aliases ]; then
 	source ~/.aliases
 fi
 
+# load my env file
+if [ -f ~/.my_env ]; then
+    source ~/.my_env
+fi
+
