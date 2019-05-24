@@ -7,3 +7,7 @@
 (setq url-proxy-services
    '(;;("https" . "localhost:8118")
      ("no_proxy" . "127.0.0.1")))
+
+(put 'narrow-to-region 'disabled nil)
+
+(setq +latex-viewers '(zathura))

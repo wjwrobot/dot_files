@@ -428,7 +428,7 @@ sudo echo -e "defaults.pcm.card 1\ndefaults.pcm.device 0\ndefaults.ctl.card 1" >
 Download **pulseaudio** and related control command utils.
 
 ```bash
-sudo pacman -S pulseaudio playerctl
+sudo pacman -S pulseaudio pulsemixer playerctl
 ```
 And download **alsa-utils** for controling alsa
 ```
@@ -542,9 +542,7 @@ use **asp** or **pbget**
 sudo pacman -S asp
 ```
 
-
-
- ### Docker
+### Docker
 
 Download docker, then create a group named docker and add user to this group for using docker without "sudo" command for regular user.
 
@@ -602,8 +600,6 @@ Pull latest **tensorflow-gpu**
 docker pull tensorflow/tensorflow:latest-gpu-py3
 ```
 
-
-
 ```bash
 docker run --runtime=nvidia -it tensorflow/tensorflow:latest-gpu-py3 bash
 ```
@@ -651,8 +647,6 @@ or use **pip** package manager to install pytorch
 $ pip3 --no-cache-dir install torch
 $ pip3 --no-cache-dir install torchvision
 ```
-
-
 
 ### xclip
 
@@ -763,6 +757,10 @@ dotnet build -c Release
 ### Pdf Reader
 ```bash
 sudo pacman -S zathura zathura-pdf-poppler
+```
+### Latex
+```bash
+sudo pacman -S texlive-most
 ```
 ### Sync tool
 ```bash

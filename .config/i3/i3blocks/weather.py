@@ -5,7 +5,6 @@ import urllib
 import urllib.parse
 import urllib.request
 
-
 def main():
     city = "Zhangzhou, China"
     api_key = "f958ec1f8a73e7421886eb650549af24"

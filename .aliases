@@ -12,4 +12,6 @@ alias nv='nvim' \
     ra='ranger' \
     nb='newsboat' \
 	yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
-	yta="yt -x -f bestaudio/best"
+	yta='yt -x -f bestaudio/best' \
+    spi='sudo pacman -S' \
+    spu='sudo pacman -Syu'

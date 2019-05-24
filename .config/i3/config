@@ -216,15 +216,15 @@ bindsym $mod+Ctrl+t exec --no-startup-id termite
 # qutebrowser
 bindsym $mod+Ctrl+q exec --no-startup-id qutebrowser
 
-# Pulse Audio controls
-bindsym $mod+F12 exec --no-startup-id pactl set-sink-volume 0 +10%
-bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume 0 -10%
-bindsym $mod+F10 exec --no-startup-id pactl set-sink-mute 0 toggle
+# pulsemixer
+bindsym $mod+F12 exec --no-startup-id pulsemixer --change-volume +5
+bindsym $mod+F11 exec --no-startup-id pulsemixer --change-volume -5
+bindsym $mod+F10 exec --no-startup-id pulsemixer --toggle-mute
 
-# ALSA Audoi controls
-#bindsym $mod+F12 exec amixer -q set Master 5%+ unmute #increase sound volume
-#bindsym $mod+F11 exec amixer -q set Master 5%- unmute  #decrease sound volume
-#bindsym $mod+F10 exec amixer -q set Master toggle # mute sound
+# Pulse Audio controls
+#bindsym $mod+F12 exec --no-startup-id pactl set-sink-volume 0 +10%
+#bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume 0 -10%
+#bindsym $mod+F10 exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Sreen brightness controls
 bindsym $mod+F6 exec --no-startup-id light -A 5
