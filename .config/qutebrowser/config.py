@@ -264,7 +264,7 @@ c.fonts.messages.info = "16pt DejaVu Sans"
 c.fonts.messages.warning = "16pt DejaVu Sans"
 c.fonts.prompts = "16pt sans-serif"
 c.fonts.statusbar = "16pt DejaVu Sans"
-c.fonts.tabs = "18pt DejaVu Sans"
+c.fonts.tabs = "16pt DejaVu Sans"
 
 c.content.proxy = "http://localhost:8118"
 

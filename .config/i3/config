@@ -100,7 +100,7 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 
 set $ws9 "9"
 set $ws10 "10"
 
@@ -243,7 +243,7 @@ bindsym XF86AudioPrev exec playerctl previo
 bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/'
 
 # Automatically putting clients on specific workspaces
-#assign [class="Firefox"] $ws2
+assign [class="cantata"] $ws8
 
 # Execute when i3 start up
 exec --no-startup-id termite

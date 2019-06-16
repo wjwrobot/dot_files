@@ -522,9 +522,10 @@ git config --global http.proxy 127.0.0.1:8118
 
 ### File manager
 
-ranger (use w3m to preview image)
+ranger (use w3m to preview image) and pcmanfm
 ```bash
-sudo pacman -S ranger w3m
+sudo pacman -S ranger highlight w3m
+sudo pacman -S pcmanfm
 ```
 
 ### tmux & tmux-resurrect
@@ -815,6 +816,15 @@ sudo pacman -S dmenu
 ### Notification
 ```bash
 sudo pacman -S dunst
+```
+
+### Enable to connect to android
+```bash
+sudo pacman -S mtpfs gvfs-mtp gvfs-gphoto2
+```
+### Package Manager
+```bash
+sudo pacman -S yarn
 ```
 ## References
 

@@ -9,28 +9,28 @@ let python_highlight_all=1
 call plug#begin('~/.vim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-surround'
-"------------------------------ 
+"------------------------------
 " fuzzy finder
 Plug '/usr/bin/fzf' " has installed in system
 Plug 'junegunn/fzf.vim'
-"------------------------------ 
+"------------------------------
 " Ag
 "Plug 'mileszs/ack.vim'
-"------------------------------ 
+"------------------------------
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-"------------------------------ 
+"------------------------------
 " Async Autocompletion
 " https://github.com/prabirshrestha/asyncomplete.vim
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"------------------------------ 
+"------------------------------
 " Vim Lsp
 " https://github.com/prabirshrestha/vim-lsp
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-"------------------------------ 
+"------------------------------
 " LSP support for vim and neovim
 "Plug 'autozimu/LanguageClient-neovim', {
 "    \ 'branch': 'next',
@@ -38,21 +38,21 @@ Plug 'prabirshrestha/vim-lsp'
 "    \ }
 "
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"------------------------------ 
-" Another Completion Plugin 
+"------------------------------
+" Another Completion Plugin
 " see https://github.com/Shougo/deoplete.nvim
-"------------------------------ 
+"------------------------------
 " Asynchronous Linting and Make Framework
 "Plug 'neomake/neomake'
-"------------------------------ 
+"------------------------------
 " Code Fold
 "Plug 'tmhedberg/SimpylFold'
-"------------------------------ 
+"------------------------------
 call plug#end()
 
 " see http://yannesposito.com/Scratch/en/blog/Vim-as-IDE/
-"------------------------------------------------------------ 
-"------------------------------------------------------------ 
+"------------------------------------------------------------
+"------------------------------------------------------------
 "                         COLOR SCHEME
 " theme: https://github.com/joshdick/onedark.vim
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -75,12 +75,12 @@ colorscheme onedark
 "set background=dark
 "colorscheme solarized
 
-"------------------------------------------------------------ 
+"------------------------------------------------------------
 "------------------------------------------------------------
 "               CODE FOLDING
 set foldmethod=indent
 set foldlevel=99
-"------------------------------------------------------------ 
+"------------------------------------------------------------
 "               MISC
 "syntax on
 "filetype indent plugin on
@@ -95,7 +95,7 @@ set smartindent
 "set smarttab
 " Tab length
 set ts=4
-set expandtab  
+set expandtab
 set shiftwidth=4
 set expandtab
 set cursorline
@@ -135,11 +135,11 @@ inoremap jj <Esc>
 
 "------------------------------------------------------------
 "               WEB DEVELOPMENT
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-    \ set expandtab
+"au BufNewFile,BufRead *.js, *.html, *.css
+"    \ set tabstop=2
+"    \ set softtabstop=2
+"    \ set shiftwidth=2
+"    \ set expandtab
 
 "------------------------------------------------------------
 "               FLAG UNNECESSARY WHITESPACE
@@ -147,7 +147,7 @@ au BufNewFile,BufRead *.js, *.html, *.css
 
 "------------------------------------------------------------
 "------------------------------------------------------------
-"               LSP FOR PYTHON 
+"               LSP FOR PYTHON
 " see more details: https://github.com/prabirshrestha/vim-lsp
 " Register pyls Python language server.
 " MUST DO 'pip install python-language-server'
@@ -174,7 +174,7 @@ if executable('ccls')
 endif
 "------------------------------------------------------------
 "------------------------------------------------------------
-"               CONFIGURE 'asyncomplete' PLUGIN 
+"               CONFIGURE 'asyncomplete' PLUGIN
 "Tab completion
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

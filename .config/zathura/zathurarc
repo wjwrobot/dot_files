@@ -31,8 +31,6 @@ map <C-r> rotate
 map r recolor
 map <S-Up> zoom in
 map <S-Down> zoom out
-map J zoom in
-map K zoom out
 
 #------------------------------------------------------------
 set default-bg                  "#282c34"

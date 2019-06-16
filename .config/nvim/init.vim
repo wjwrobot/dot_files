@@ -153,11 +153,11 @@ inoremap jj <Esc>
 
 "------------------------------------------------------------
 "               WEB DEVELOPMENT
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
-    \ set expandtab
+"au BufNewFile,BufRead *.js, *.html, *.css
+"    \ set tabstop=2
+"    \ set softtabstop=2
+"    \ set shiftwidth=2
+"    \ set expandtab
 
 "------------------------------------------------------------
 "               FLAG UNNECESSARY WHITESPACE
