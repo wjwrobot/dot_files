@@ -769,10 +769,18 @@ sudo pacman -S syncthing
 ```
 
 ### Input Method
+fcitx
 ```bash
-sudo pacman -S ibus ibus-rime
+sudo pacman -S fcitx-im fcitx-configtool fcitx-mozc fcitx-sunpinyin
+```
+then add input method using *fcitx-configtool*.
+
+(*OR* ibus
+```bash
+sudo pacman -S ibus ibus-rime ibus-anthy
 ```
 Change the default chinese input method to simplified, within the file *~/.config/ibus/rime/build/luna_pinyin.schema.yaml* put *reset: 1* underneath the *name: simplification*.
+)
 
 ### SwitchyOmega
 In auto switch profile, in Rule list confifug, select AutoProxy, and put the following content into Rule list url.
@@ -825,6 +833,11 @@ sudo pacman -S mtpfs gvfs-mtp gvfs-gphoto2
 ### Package Manager
 ```bash
 sudo pacman -S yarn
+```
+
+### Compositor
+```bash
+sudo pacman -S compton
 ```
 ## References
 

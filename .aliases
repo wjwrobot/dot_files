@@ -17,4 +17,5 @@ alias nv='nvim' \
     ytmp3='pxy && youtube-dl --extract-audio --audio-format mp3' \
     ytdl='pxy && youtube-dl' \
     spi='sudo pacman -S' \
-    spu='sudo pacman -Syu'
+    spu='sudo pacman -Syu' \
+    mpd='pxy && mpd'
