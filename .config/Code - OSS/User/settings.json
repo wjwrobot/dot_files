@@ -1,5 +1,6 @@
 {
     "editor.fontSize": 16,
+    "editor.rulers": [80],
     "window.zoomLevel": 2,
     "python.jediEnabled": false,
     "telemetry.enableCrashReporter": false,
@@ -48,4 +49,6 @@
             ]
         }
     ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "workbench.sideBar.location": "left",
 }

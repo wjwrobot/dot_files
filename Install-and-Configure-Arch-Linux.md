@@ -839,9 +839,26 @@ sudo pacman -S yarn
 ```bash
 sudo pacman -S compton
 ```
-## References
+
+### Swap Caps and Esc key
+For console:
+```bash
+sudo mkdir -p /usr/local/share/kbd/keymaps
+sudo echo "keycode 1 = Caps_Lock\nkeycode 58 = Escape" > /usr/local/share/kbd/keymaps/personal.map
+
+sudo echo "KEYMAP=/usr/local/share/kbd/keymaps/personal.map" >> /etc/vconsole.conf
+```
+
+For X:
+add a new file named .Xmodmap (for details see my dot files), then
+```bash
+xmodmap ~/.Xmodmap
+```
+
+### References
 
 1. [Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
 2. [How do I start tensorflow docker jupyter notebook](https://stackoverflow.com/questions/33636925/how-do-i-start-tensorflow-docker-jupyter-notebook#)
 3. [Configure Emacs, lsp-mode and pyls-ms](https://vxlabs.com/2018/11/19/configuring-emacs-lsp-mode-and-microsofts-visual-studio-code-python-language-server/)
 4. [How I draw figures for my mathematical lecture notes using Inkscape](https://castel.dev/post/lecture-notes-2/)
+5. [Dot files](https://github.com/wjwrobot/dot_files)
