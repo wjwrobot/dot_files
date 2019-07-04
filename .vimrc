@@ -1,79 +1,61 @@
 set nocompatible
-set number
+set number relativenumber
 set showmatch
 let python_highlight_all=1
 "------------------------------------------------------------
 "------------------------------------------------------------
 "                         PLUGIN MANAGER
+" Install vim-plug
+" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"------------------------------------------------------------
 " vim-plug package manager
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-surround'
+"------------------------------
+" Intellisense engine, full lsp support as VSCode
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "------------------------------
 " fuzzy finder
 Plug '/usr/bin/fzf' " has installed in system
 Plug 'junegunn/fzf.vim'
 "------------------------------
-" Ag
-"Plug 'mileszs/ack.vim'
-"------------------------------
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+" ------------------------------
+" Latex
+Plug 'lervag/vimtex'
 "------------------------------
-" Async Autocompletion
-" https://github.com/prabirshrestha/asyncomplete.vim
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Snippets
+Plug 'sirver/ultisnips'
+"Plug 'honza/vim-snippets'
 "------------------------------
-" Vim Lsp
-" https://github.com/prabirshrestha/vim-lsp
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+Plug 'jiangmiao/auto-pairs'
 "------------------------------
-" LSP support for vim and neovim
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-"
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"------------------------------
-" Another Completion Plugin
-" see https://github.com/Shougo/deoplete.nvim
-"------------------------------
-" Asynchronous Linting and Make Framework
-"Plug 'neomake/neomake'
+" Ag
+"Plug 'mileszs/ack.vim'
 "------------------------------
 " Code Fold
 "Plug 'tmhedberg/SimpylFold'
 "------------------------------
 call plug#end()
 
-" see http://yannesposito.com/Scratch/en/blog/Vim-as-IDE/
 "------------------------------------------------------------
 "------------------------------------------------------------
 "                         COLOR SCHEME
 " theme: https://github.com/joshdick/onedark.vim
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
   if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
   if (has("termguicolors"))
     set termguicolors
   endif
 endif
 "---------------
 colorscheme onedark
-"set background=dark
-"colorscheme solarized
 
 "------------------------------------------------------------
 "------------------------------------------------------------
@@ -115,79 +97,136 @@ set wildmenu
 set wildmode=full
 " Show ruler
 set ruler
+set clipboard=unnamedplus
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
 "------------------------------------------------------------
 "               KEYMAP
 "it is need for map <Space> key to leader key
 nnoremap <Space> <Nop>
 let mapleader=" "       "change leader key to <Space> key
 inoremap jj <Esc>
-"------------------------------------------------------------
-"------------------------------------------------------------
-"               PYTHON PEP 8
-"au BufNewFile,BufRead *.py
-"    \ set tabstop=4
-"    \ set softtabstop=4
-"    \ set shiftwidth=4
-"    \ set textwidth=79
-"    \ set expandtab
-"    \ set autoindent
-"    \ set fileformat=unix
 
+" Copy selected text to system clipboard
+vnoremap <C-c> "+y
+map <C-p> "+P
 "------------------------------------------------------------
-"               WEB DEVELOPMENT
-"au BufNewFile,BufRead *.js, *.html, *.css
-"    \ set tabstop=2
-"    \ set softtabstop=2
-"    \ set shiftwidth=2
-"    \ set expandtab
+"------------------------------------------------------------
+"               CONFIGURE FOR LATEX
+"must to install 'latexmk'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+"------------------------------------------------------------
+"               CONFIGURE FOR UltiSnips
+"must 'pip3 install --user --upgrade pynvim'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+"------------------------------------------------------------
+"               CONFIGURE FOR coc.vim
+" if hidden is not set, TextEdit might fail.
+set hidden
 
-"------------------------------------------------------------
-"               FLAG UNNECESSARY WHITESPACE
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
 
-"------------------------------------------------------------
-"------------------------------------------------------------
-"               LSP FOR PYTHON
-" see more details: https://github.com/prabirshrestha/vim-lsp
-" Register pyls Python language server.
-" MUST DO 'pip install python-language-server'
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-"------------------------------------------------------------
-"               LSP FOR C/C++
-"see https://github.com/MaskRay/ccls/wiki/vim-lsp
-" Register ccls C++ lanuage server.
-" MUST DO 'yay -S ccls-git'
-if executable('ccls')
-   au User lsp_setup call lsp#register_server({
-      \ 'name': 'ccls',
-      \ 'cmd': {server_info->['ccls']},
-      \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-      \ 'initialization_options': {'cache': {'directory': '/tmp/ccls/cache' }},
-      \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-      \ })
-endif
-"------------------------------------------------------------
-"------------------------------------------------------------
-"               CONFIGURE 'asyncomplete' PLUGIN
-"Tab completion
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
-"Auto popup menu
-let g:asyncomplete_auto_popup = 1
-"------------------------------------------------------------
-"               CONFIGURE 'vim-lsp'
-"see https://github.com/MaskRay/ccls/wiki/vim-lsp
-" Key bindings for vim-lsp.
-nn <silent> <Leader>d :LspDefinition<cr>
-nn <silent> <Leader>r :LspReferences<cr>
-nn <f2> :LspRename<cr>
-nn <silent> <Leader>a :LspWorkspaceSymbol<cr>
-nn <silent> <Leader>l :LspDocumentSymbol<cr>
-"------------------------------------------------------------
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
