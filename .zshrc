@@ -114,7 +114,7 @@ compinit
 
 # PATH
 #export PATH=$PATH:~/.emacs.d/bin
-export PATH=$PATH:~/Git/doom/bin:/opt/anaconda/bin
+export PATH=$PATH:~/Git/doom/bin:/opt/anaconda/bin:~/.cargo/bin
 
 # Load my alias file
 if [ -f ~/.aliases ]; then

@@ -694,7 +694,7 @@ sudo pacman -S fzf
 #### Vim & Neovim & as IDE
 vim plugin manager: vim-plug
 code-searching tool: the_silver_searcher (**ag**)
-Plugins for making a IDE: [vim-lsp](https://github.com/prabirshrestha/vim-lsp)
+Plugins for making a IDE: coc.vim and its extensions (coc-python, coc-snippets, coc-vimtex)
 ```bash
 sudo pacman -S vim neovim
 sudo pacman -S the_silver_searcher
@@ -755,9 +755,9 @@ cd python-language-server/src/LanguageServer/Impl
 dotnet build -c Release
 ```
 
-### Pdf Reader
+### Book Reader
 ```bash
-sudo pacman -S zathura zathura-pdf-poppler
+sudo pacman -S zathura zathura-pdf-poppler zathura-pdf-mupdf
 ```
 ### Latex
 ```bash

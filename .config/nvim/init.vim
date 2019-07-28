@@ -34,6 +34,13 @@ Plug 'sirver/ultisnips'
 "------------------------------
 Plug 'jiangmiao/auto-pairs'
 "------------------------------
+Plug 'vim-airline/vim-airline'
+"------------------------------
+Plug 'tpope/vim-commentary'
+"------------------------------
+" Syntax highlighting and indentation
+Plug 'sheerun/vim-polyglot'
+"------------------------------
 " Ag
 "Plug 'mileszs/ack.vim'
 "------------------------------
@@ -263,9 +270,14 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " --------------------------------------------------
 "               CONFIGURE FOR fzf
 " https://jesseleite.com/posts/2/its-dangerous-to-vim-alone-take-fzf
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-p> :Files<CR>
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>h :History<CR>
 nmap <Leader>H :Helptags!<CR>
 nmap <Leader>t :BTags<CR>
 nmap <Leader>T :Tags<CR>
+nmap <Leader>l :BLines<CR>
+nmap <Leader>L :Lines<CR>
+nmap <Leader>' :Marks<CR>
+nmap <Leader>g :Ag<Space>
+nmap <leader>c :Commands<CR>

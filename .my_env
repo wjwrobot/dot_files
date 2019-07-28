@@ -1,0 +1,15 @@
+export EDITOR="nvim"
+export TERMINAL="termite"
+export BROWSER="chromium"
+export READER="zathura"
+export FILE="ranger"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export QT_IM_MODULE=fcitx
+
+# fzf config within vim(neovim)
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+# dotnet
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
