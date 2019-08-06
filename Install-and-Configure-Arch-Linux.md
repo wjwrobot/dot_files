@@ -356,7 +356,7 @@ echo "FONT=sun12x22\nFONT_MAP=8859-2" > /etc/vconsole.conf
 ### Install Xorg
 
 ```bash
- sudo pacman -S xorg-server xorg-xinit
+ sudo pacman -S xorg-server xorg-xinit xorg-xinput
 ```
 
 configure **~/.xinitrc** file
@@ -853,6 +853,28 @@ For X:
 add a new file named .Xmodmap (for details see my dot files), then
 ```bash
 xmodmap ~/.Xmodmap
+```
+
+### Touchpad
+
+#### Permanent change
+Put following content to file */etc/X11/xorg.conf.d/40-touchpad.conf*
+```
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        MatchIsTouchpad "on"
+        Driver "libinput"
+        Option "Tapping" "on"
+EndSection
+```
+
+#### Runtime change
+replace the following command with appropriate values.
+```sh
+sudo pacman -S xorg-xinput
+xinput
+xinput --list-props your_device_id
+xinput set-prop your_device_id "want_to_change_prop" changed_number
 ```
 
 ### References

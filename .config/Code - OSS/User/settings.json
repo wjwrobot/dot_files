@@ -56,5 +56,8 @@
   "prettier.singleQuote": true,
   "gitlens.currentLine.enabled": false,
   "rust-client.rustupPath": "/home/wjw/.cargo/bin/rustup",
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  }
 }
