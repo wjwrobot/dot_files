@@ -858,7 +858,7 @@ xmodmap ~/.Xmodmap
 ### Touchpad
 
 #### Permanent change
-Put following content to file */etc/X11/xorg.conf.d/40-touchpad.conf*
+Put following content to file `/etc/X11/xorg.conf.d/40-touchpad.conf`
 ```
 Section "InputClass"
         Identifier "libinput touchpad catchall"
@@ -875,6 +875,14 @@ sudo pacman -S xorg-xinput
 xinput
 xinput --list-props your_device_id
 xinput set-prop your_device_id "want_to_change_prop" changed_number
+```
+
+### Network
+Install networkmanager
+```sh
+sudo pacman -S networkmanager
+nmcli device wifi list
+nmcli device wifi connect your_wifi_SSID password your_password
 ```
 
 ### References
