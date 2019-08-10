@@ -275,7 +275,7 @@ pacman -S grub efibootmgr
 
 #### Install the GRUB EFI application
 
-Install the GRUB EFI application **grubx64.efi** to ***/boot/efi*/EFI/GRUB/** and install its modules to **/boot/grub/x86_64-efi/** .
+Install the GRUB EFI application **grubx64.efi** to **/boot/efi*/EFI/GRUB/** and install its modules to **/boot/grub/x86_64-efi/** .
 
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
@@ -356,7 +356,7 @@ echo "FONT=sun12x22\nFONT_MAP=8859-2" > /etc/vconsole.conf
 ### Install Xorg
 
 ```bash
- sudo pacman -S xorg-server xorg-xinit xorg-xinput
+sudo pacman -S xorg-server xorg-xinit xorg-xinput
 ```
 
 configure **~/.xinitrc** file
@@ -854,6 +854,8 @@ add a new file named .Xmodmap (for details see my dot files), then
 ```bash
 xmodmap ~/.Xmodmap
 ```
+(note: if you want to attach an external keyboard, you also need to execute the
+above command)
 
 ### Touchpad
 
@@ -878,11 +880,22 @@ xinput set-prop your_device_id "want_to_change_prop" changed_number
 ```
 
 ### Network
+
+#### networkmanager
 Install networkmanager
 ```sh
 sudo pacman -S networkmanager
 nmcli device wifi list
 nmcli device wifi connect your_wifi_SSID password your_password
+```
+#### netctl
+- wireless
+```sh
+sudo pacman -S dialog wpa_suppliant
+```
+- wired
+```sh
+sudo pacman -S ifplugd
 ```
 
 ### References
