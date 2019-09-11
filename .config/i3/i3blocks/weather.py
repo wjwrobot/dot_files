@@ -20,7 +20,7 @@ def main():
             icon += " "
         temp = int(float(weather['main']['temp']))
         #print('{}{} {}°C'.format(icon, desc, temp))
-        print('{}{}°C'.format(icon, temp))
+        print('{}{}°C\n'.format(icon, temp))
     except:
         exit
 

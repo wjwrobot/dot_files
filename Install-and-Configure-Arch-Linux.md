@@ -758,6 +758,7 @@ dotnet build -c Release
 ### Book Reader
 ```bash
 sudo pacman -S zathura zathura-pdf-poppler zathura-pdf-mupdf
+sudo pacman -S calibre
 ```
 ### Latex
 ```bash
@@ -896,6 +897,13 @@ sudo pacman -S dialog wpa_suppliant
 - wired
 ```sh
 sudo pacman -S ifplugd
+```
+Find your ethernet interface using `ip link` command, and
+start/enable the `netctl-ifplugd@interface.service` systemd unit. (note: change the above *interface* with your ethernet interface)
+
+### Dict
+```sh
+sudo pacman -S goldendict
 ```
 
 ### References
