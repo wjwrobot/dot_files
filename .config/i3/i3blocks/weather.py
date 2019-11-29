@@ -6,7 +6,7 @@ import urllib.parse
 import urllib.request
 
 def main():
-    city = "Zhangzhou, China"
+    city = "Xiamen, China"
     api_key = "f958ec1f8a73e7421886eb650549af24"
     url = "http://api.openweathermap.org/data/2.5/weather?"
     try:

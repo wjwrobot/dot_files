@@ -675,8 +675,8 @@ Go to github add a new key, then paste the content of the clipboard to it.
 
 ```
 Host github.com
- Hostname ssh.github.com
- Port 443
+Hostname ssh.github.com
+Port 443
 ```
 
 Put the content above to the file `~/.ssh/config`.
@@ -904,6 +904,66 @@ start/enable the `netctl-ifplugd@interface.service` systemd unit. (note: change 
 ### Dict
 ```sh
 sudo pacman -S goldendict
+```
+
+### ADB
+```sh
+sudo pacman -S android-tools
+```
+
+### Nvidia Driver
+```sh
+sudo pacman -S nvidia nvidia-utils bbswitch
+yay -S nvidia-xrun
+```
+and go to configure .nvidia-xinitrc
+
+### VirtualBox
+```sh
+sudo pacman -S virtualbox
+systemctl start systemd-modules-load.service
+sudo modprobe vboxdrv
+yay -S virtualbox-ext-oracle
+```
+(note: while installing select *virtualbox-host-modules-arch*)
+
+### Misc
+
+Snap:
+```sh
+yay -S snapd
+systemctl start snapd.socket
+```
+Sticky notes:
+```sh
+yay -S qtpad
+```
+### Bluetooth
+```sh
+sudo pacman -S bluez bluez-utils
+systemctl start bluetooth.service
+bluetoothctl
+```
+### MySQL/MariaDB
+```sh
+sudo pacman -S mariadb
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+systemctl start mariadb.service
+sudo pip install mysql-connector
+```
+
+```sh
+sudo mysql -u root -p
+```
+after enter into MariaDB, assign a password for root user, so you can enter MariaDB without 'sudo':
+
+```
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_password'
+```
+
+### tldr
+```sh
+sudo pacman -S tldr
 ```
 
 ### References

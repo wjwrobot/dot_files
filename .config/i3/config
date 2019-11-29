@@ -186,6 +186,7 @@ client.urgent           $red $red $white $red $red
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks/i3blocks.conf
 	position top
+	#position bottom
 
 	colors {
 		#background #000000
