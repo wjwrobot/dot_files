@@ -6,5 +6,6 @@
 
 # auto enter i3 window manager
 exec i3
+#exec dwm
 # startup ibus daemon
 #ibus-daemon --xim &

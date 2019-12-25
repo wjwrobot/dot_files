@@ -463,13 +463,22 @@ gtk related configure files:
 ~/.gtkrc-2.0
 ~/.config/gtk-3.0/settings.ini
 ```
+GTK Theme
+```sh
+sudo pacman -S adapta-gtk-theme
+```
+Icon theme
+```sh
+git clone https://github.com/horst3180/arc-icon-theme --depth 1 && cd arc-icon-theme
+./autogen.sh --prefix=/usr
+sudo make install
+```
 
 add the following environment variable to **~/.pam_environment**
 
 ```
 QT_QPA_PLATFORMTHEME=qt5ct
 ```
-
 
 
 ### laptop power saving
@@ -706,6 +715,10 @@ yay -S ccls-git
 pip3 install --user --upgrade pynvim
 ```
 
+```sh
+sudo pacman -S ctags
+```
+
 chemacs
 ```bash
 git clone https://github.com/plexus/chemacs.git
@@ -836,6 +849,14 @@ sudo pacman -S mtpfs gvfs-mtp gvfs-gphoto2
 sudo pacman -S yarn
 ```
 
+### Compositor with blur
+```sh
+git clone https://github.com/tryone144/compton.git
+sudo pacman -S libconfig asciidoc
+make
+make docs
+make install
+```
 ### Compositor
 ```bash
 sudo pacman -S compton
@@ -929,14 +950,40 @@ yay -S virtualbox-ext-oracle
 
 ### Misc
 
+GNU Debugger:
+```sh
+sudo pacman -S gdb
+```
+Memory Debugging:
+```sh
+sudo pacman -S valgrind
+```
 Snap:
 ```sh
 yay -S snapd
 systemctl start snapd.socket
 ```
+
+Godot game engine
+Scons build tool:
+```sh
+sudo pacman -S scons
+```
+```sh
+yay -S godot-git
+```
 Sticky notes:
 ```sh
 yay -S qtpad
+```
+
+Image Viewer
+```sh
+sudo pacman -S sxiv
+```
+
+```sh
+sudo pacman -S ntfs-3g
 ```
 ### Bluetooth
 ```sh

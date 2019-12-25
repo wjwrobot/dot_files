@@ -30,7 +30,8 @@ exec --no-startup-id feh --bg-scale $wallpaper
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+#bindsym $mod+Return exec termite
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -248,7 +249,7 @@ bindsym Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/'
 assign [class="cantata"] $ws8
 
 # Execute when i3 start up
-exec --no-startup-id termite
+exec --no-startup-id st
 
 # Polybar
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh

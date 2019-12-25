@@ -41,6 +41,10 @@ Plug 'tpope/vim-commentary'
 " Syntax highlighting and indentation
 Plug 'sheerun/vim-polyglot'
 "------------------------------
+" Vim Startify
+Plug 'mhinz/vim-startify'
+" Viewer & Finder for LSP symbols and tags
+Plug 'liuchengxu/vista.vim'
 " Ag
 "Plug 'mileszs/ack.vim'
 "------------------------------

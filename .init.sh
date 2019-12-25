@@ -9,5 +9,5 @@ sudo ssr start &> /dev/null                 #ssr
 #ibus-daemon --xim &                        #ibus im
 (fcitx &) &> /dev/null                        #fcitx im
 sudo wifi-menu                              #wifi
-picom -b
+compton -b
 #emacs --daemon

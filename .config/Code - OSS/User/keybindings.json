@@ -60,4 +60,9 @@
         "key": "ctrl+alt+j",
         "command": "workbench.action.openRecent"
     },
+    {
+        "key": "ctrl+shift+/",
+        "command": "editor.action.blockComment",
+        "when": "editorTextFocus && !editorReadonly"
+    },
 ]
