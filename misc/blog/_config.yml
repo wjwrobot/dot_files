@@ -1,0 +1,255 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: faust's blog
+subtitle:
+description:
+keywords:
+author: Rick Ong
+language:
+- en
+timezone:
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: https://wjwrobot.github.io
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: material-x
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:wjwrobot/wjwrobot.github.io.git
+  branch: master
+
+# My configure
+# Plugins
+Plugins:
+    - hexo-renderer-mathjax
+    - hexo-generator-feed
+    - hexo-generator-search
+    - hexo-renderer-less
+    - hexo-autoprefixer
+    - hexo-generator-json-content
+    - hexo-recommended-posts
+    - hexo-helper-qrcode
+    - hexo-generator-sitemap
+    - hexo-generator-baidu-sitemap
+
+import:
+  css:
+  js:
+  meta:
+  - name: "theme-color"
+    content: "#f24e32"
+  - name: "msapplication-TileColor"
+    content: "#f24e32"
+  - name: "msapplication-config"
+    content: "https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/browserconfig.xml"
+  link:
+  - rel: 'shortcut icon'
+    type: 'image/x-icon'
+    href: 'https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicon.ico'
+  - rel: 'icon'
+    type: 'image/x-icon'
+    sizes: '32x32'
+    href: 'https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/favicon-32x32.png'
+  - rel: 'apple-touch-icon'
+    type: 'image/png'
+    sizes: '180x180'
+    href: 'https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/apple-touch-icon.png'
+  - rel: 'mask-icon'
+    href: 'https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/safari-pinned-tab.svg'
+    color: '#f24e32'
+  - rel: 'manifest'
+    href: 'https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/site.webmanifest'
+
+# Social association
+social:
+  - icon: fas fa-rss
+    url: atom.xml
+  - icon: fab fa-github
+    url: https://github.com/wjwrobot
+  - icon: fas fa-envelope
+    url: mailto:wjwsuper123@gmail.com
+  - icon: fas fa-music
+    url: https://www.xiami.com/user/229191753
+
+# Navigation bar
+nav_menu:
+  - name: home
+    icon: fas fa-home
+    url: /
+    #  - name: blogs
+    #    icon: fas fa-rss
+    #    url: /
+  - name: archives
+    icon: fas fa-archive
+    url: archives/
+  - name: About
+    icon: fas fa-user
+    url: about/
+
+# Widgets
+widgets:
+  - widget: author
+    # avatar: https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png
+    avatar: https://cdn.jsdelivr.net/gh/wjwrobot/dot_files@1.0/assets/rick.jpg
+    # jinrishici: true
+    social: true
+  - widget: category
+  - widget: tagcloud
+  - widget: list
+    icon: fas fa-medal
+    title: Projects
+    more:
+      icon: fas fa-arrow-right
+      url: project/
+    rows:
+      - name: Auto Driver
+        desc:
+        icon: fas fa-cube
+        url: project/autodriver/
+      - name: Speech Recognition
+        desc:
+        icon: fas fa-cube
+        url: project/nlp/
+      - name: Computer Vision
+        desc:
+        icon: fas fa-cube
+        url: project/cv/
+        # - name: Math
+        #desc:
+        #icon: fas fa-cube
+        #url: project/math/
+  - widget: music
+    icon: fas fa-compact-disc
+    title: "Recent Listening"
+    more:
+      icon: far fa-heart
+      url: https://www.xiami.com/user/229191753
+    server: xiami   # netease（网易云音乐）tencent（QQ音乐） xiami（虾米） kugou（酷狗）
+    type: playlist    # song （单曲） album （专辑） playlist （歌单） search （搜索）
+    # id: 282588550 # 歌曲/专辑/歌单 ID   Japanese
+    id: 354945703 # Rock
+    # - widget: plain
+    #icon: fas fa-bullhorn
+    #title: Note
+    #body: 'Welcome'
+    #more:
+        #icon: fas fa-question-circle
+        #url: about/
+    # - widget: list
+    #icon: fas fa-link
+    #title: Link
+    #rows:
+        #- name: About me
+        #icon: fas fa-comment-dots
+        #url: https://github.com/wjwrobot
+  - widget: toc
+
+
+# feed
+feed:
+  type: atom
+  path: atom.xml
+#  limit: 20
+#  hub:
+#  content:
+#  content_limit: 140
+#  content_limit_delim: ' '
+#  order_by: -date
+#  icon:
+
+# Sitemap, useful for seo
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+# CDN
+theme_cdn: true
+# Google analytics
+google_analytics: UA-132766075-1
+
+# Disqus Comment System
+disqus_shortname: kurisu-makise
+
+# Share
+share:
+  - id: qq
+    name: QQ好友
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png
+  - id: qzone
+    name: QQ空间
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png
+  - id: qrcode
+    name: 微信
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png
+  - id: weibo
+    name: 微博
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png
+  - id: qrcode
+    name: QRcode
+    img: https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png

@@ -16,8 +16,8 @@ set $mod Mod4
 font pango:monospace 15
 
 # ****************************
-#set $wallpaper ~/.dotfiles/assets/spacesurf.png
-set $wallpaper ~/Pictures/cartoon_blue.jpg
+set $wallpaper ~/.dotfiles/assets/spacesurf.png
+#set $wallpaper ~/Pictures/cartoon_blue.jpg
 set $lockpicture ~/.dotfiles/assets/wallpaper.png
 
 # wallpaper

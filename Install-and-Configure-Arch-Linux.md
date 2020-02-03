@@ -651,6 +651,15 @@ conda create -n pytorch pytorch torchvision cuda100 -c pytorch
 source activate pytorch
 ```
 
+Install packages in the `pytorch` environment we created before.
+```
+source /opt/anaconda/bin/activate pytorch
+conda install opencv
+conda install -c conda-forge opencv=4.2 (or this)
+conda install scikit-learn
+conda install -c conda-forge matplotlib
+```
+
 or use **pip** package manager to install pytorch
 
 ```bash
@@ -980,6 +989,11 @@ yay -S qtpad
 Image Viewer
 ```sh
 sudo pacman -S sxiv
+```
+
+Weather
+```sh
+curl wttr.in
 ```
 
 ```sh

@@ -65,4 +65,14 @@
         "command": "editor.action.blockComment",
         "when": "editorTextFocus && !editorReadonly"
     },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
 ]
