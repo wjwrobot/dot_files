@@ -1,0 +1,4 @@
+rofi.font: Hack Nerd Font 18
+rofi.hide-scrollbar: true
+rofi.width: 50
+rofi.theme: /usr/share/rofi/themes/Arc-Dark.rasi

@@ -11,14 +11,14 @@
 ## ncmpcpp.
 ##
 #
-#ncmpcpp_directory = ~/.ncmpcpp
+ncmpcpp_directory = ~/.config/ncmpcpp
 #
 ##
 ## Directory for storing downloaded lyrics. It defaults to ~/.lyrics since other
 ## MPD clients (eg. ncmpc) also use that location.
 ##
 #
-#lyrics_directory = ~/.lyrics
+lyrics_directory = ~/.config/lyrics
 #
 ##### connection settings #####
 #
@@ -30,7 +30,7 @@
 #
 ## Needed for tag editor and file operations to work.
 ##
-#mpd_music_dir = ~/music
+mpd_music_dir = "~/Music"
 #
 #mpd_crossfade_time = 5
 #
@@ -80,9 +80,10 @@
 #
 ## Available values: spectrum, wave, wave_filled, ellipse.
 ##
-#visualizer_type = wave
+visualizer_type = spectrum
 #
-#visualizer_look = ●▮
+#visualizer_look = ●卐
+#visualizer_look = 卐
 #
 #visualizer_color = blue, cyan, green, yellow, magenta, red
 #
@@ -113,7 +114,7 @@
 #
 ## Defines how long messages are supposed to be visible.
 ##
-#message_delay_time = 5
+message_delay_time = 1
 #
 ##### song format #####
 ##
@@ -182,23 +183,23 @@
 ## Note: colors can be nested.
 ##
 #
-#song_list_format = {%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
+song_list_format = {$4%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
 #
-#song_status_format = {{%a{ "%b"{ (%y)}} - }{%t}}|{%f}
+song_status_format = $b{{$8"%t"}} $3by {$4%a{ $3in $7%b{ (%y)}} $3}|{$8%f}
 #
-#song_library_format = {%n - }{%t}|{%f}
+song_library_format = {%n - }{%t}|{%f}
 #
-#alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
+alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
 #
-#alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
+alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
 #
-#current_item_prefix = $(yellow)$r
+current_item_prefix = $(cyan)$r$b
 #
-#current_item_suffix = $/r$(end)
+current_item_suffix = $/r$(end)$/b
 #
-#current_item_inactive_column_prefix = $(white)$r
+current_item_inactive_column_prefix = $(magenta)$r
 #
-#current_item_inactive_column_suffix = $/r$(end)
+current_item_inactive_column_suffix = $/r$(end)
 #
 #now_playing_prefix = $b
 #
@@ -291,9 +292,9 @@
 ##
 ## Note: Possible display modes: classic, columns.
 ##
-#playlist_display_mode = columns
+playlist_display_mode = columns
 #
-#browser_display_mode = classic
+browser_display_mode = columns
 #
 #search_engine_display_mode = classic
 #
@@ -301,7 +302,7 @@
 #
 #discard_colors_if_item_is_selected = yes
 #
-#show_duplicate_tags = yes
+#show_duplicate_tags = true
 #
 #incremental_seeking = yes
 #
@@ -317,7 +318,7 @@
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-#progressbar_look = =>
+progressbar_look = ->
 #
 ## Available values: database, playlist.
 ##
@@ -331,9 +332,9 @@
 #
 ## Available values: artist, album_artist, date, genre, composer, performer.
 ##
-#media_library_primary_tag = artist
+media_library_primary_tag = album_artist
 #
-#media_library_albums_split_by_date = yes
+media_library_albums_split_by_date = no
 #
 ## Available values: wrapped, normal.
 ##
@@ -393,7 +394,7 @@
 ##
 ## Note: You can define startup screen by choosing screen from the list above.
 ##
-#startup_screen = playlist
+startup_screen = media_library
 #
 ##
 ## Note: You can define startup slave screen by choosing screen from the list
@@ -417,7 +418,7 @@
 #
 #clock_display_seconds = no
 #
-#display_volume_level = yes
+display_volume_level = no
 #
 #display_bitrate = no
 #
@@ -431,7 +432,7 @@
 ## Note: if below is enabled, ncmpcpp will ignore leading "The" word while
 ## sorting items in browser, tags in media library, etc.
 ##
-#ignore_leading_the = no
+ignore_leading_the = yes
 #
 ##
 ## Note: if below is enabled, ncmpcpp will ignore diacritics while searching and
@@ -472,11 +473,11 @@
 #
 #search_engine_default_search_mode = 1
 #
-#external_editor = nano
+external_editor = vim
 #
 ## Note: set to yes if external editor is a console application.
 ##
-#use_console_editor = yes
+use_console_editor = yes
 #
 ##### colors definitions #####
 ##
@@ -510,9 +511,9 @@
 #
 #colors_enabled = yes
 #
-#empty_tag_color = cyan
+empty_tag_color = magenta
 #
-#header_window_color = default
+#header_window_color = magenta
 #
 #volume_color = default
 #
@@ -520,19 +521,19 @@
 #
 #state_flags_color = default:b
 #
-#main_window_color = yellow
+main_window_color = white
 #
 #color1 = white
 #
 #color2 = green
 #
-#progressbar_color = black:b
+progressbar_color = black:b
 #
-#progressbar_elapsed_color = green:b
+progressbar_elapsed_color = blue:b
 #
-#statusbar_color = default
+statusbar_color = red
 #
-#statusbar_time_color = default:b
+statusbar_time_color = cyan:b
 #
 #player_state_color = default:b
 #
@@ -542,94 +543,3 @@
 #
 #active_window_border = red
 #
-# Files
- mpd_music_dir = ~/Music  
- lyrics_directory  = ~/.ncmpcpp/lyrics
- ncmpcpp_directory  = ~/.ncmpcpp
- mpd_host = "localhost"
- mpd_port = "6600"  
- mpd_connection_timeout = "5"  
- mpd_crossfade_time = "5"  
-
- # Playlist
- playlist_disable_highlight_delay = "0"  
- playlist_display_mode = "columns"  
- playlist_show_remaining_time = "yes"
-
- browser_display_mode = "columns"  
- autocenter_mode = "yes"  
- fancy_scrolling = "yes"  
- follow_now_playing_lyrics = "yes"  
- display_screens_numbers_on_start = "yes"  
- ignore_leading_the = "yes"  
- lyrics_database = "1"  
- song_columns_list_format = "(10)[blue]{l} (30)[green]{a} (30)[magenta]{b} (50)[yellow]{t}"  
- colors_enabled = "yes"  
- main_window_color = "white"  
- main_window_highlight_color =  "blue"
- header_window_color = "cyan"  
- volume_color = "red"  
- progressbar_color = "cyan"  
- statusbar_color = "white"  
- active_column_color = "cyan"  
- active_window_border = "blue"
-
-alternative_header_first_line_format = "$0$aqqu$/a {$7%a - $9}{$5%t$9}|{$8%f$9} $0$atqq$/a$9"
-alternative_header_second_line_format = "{{$6%b$9}{ [$6%y$9]}}|{%D}"
-song_list_format = "{$3%n │ $9}{$7%a - $9}{$5%t$9}|{$8%f$9}$R{$6 │ %b$9}{$3 │ %l$9}"
-user_interface = "alternative"
-#user_interface =                    "classic"
-default_place_to_search_in = "database"
-
-
-# visualizer
-visualizer_fifo_path = "/tmp/mpd.fifo"
-visualizer_output_name = "my_fifo"
-visualizer_sync_interval = "12"
-#visualizer_type = "wave" (spectrum/wave)
-visualizer_type = "spectrum" (spectrum/wave)
-visualizer_in_stereo = "yes"
-visualizer_look = "+|"
-
-
-## Navigation ##
-cyclic_scrolling = "yes"
-header_text_scrolling = "yes"
-jump_to_now_playing_song_at_start = "yes"
-lines_scrolled = "2"
-
-## Other ##
-system_encoding = "utf-8"
-regular_expressions = "extended"
-
-
-
-## Selected tracks ##
-selected_item_prefix = "* "
-discard_colors_if_item_is_selected = "no"
-
-## Seeking ##
-incremental_seeking = "yes"
-seek_time = "1"
-
-## Visivility ##
-header_visibility = "yes"
-statusbar_visibility = "yes"
-titles_visibility = "yes"
-
-
-progressbar_look =  "=>-"
-progressbar_boldness = "yes"
-progressbar_elapsed_color = "white"
-
-now_playing_prefix = "> "
-song_status_format = " $2%a $4⟫$3⟫ $8%t $4⟫$3⟫ $5%b "
-autocenter_mode = "yes"
-centered_cursor = "yes"
-
-# Misc
-display_bitrate = "yes"
-# enable_window_title = "no"
-follow_now_playing_lyrics = "yes"
-ignore_leading_the = "yes"
-empty_tag_marker = ""

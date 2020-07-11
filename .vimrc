@@ -1,122 +1,112 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'scrooloose/nerdtree'				" File Explorer
-
-Plugin 'lervag/vimtex'	" Latex
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
-"Plugin 'SirVer/ultisnips'	" snippets
-"let g:UltiSnipsExpandTrigger = '<tab>'
-"let g:UltiSnipsJumpForwardTrigger = '<tab>'
-"let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-
-" Airline
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-
-
-" show line number
-" if not, specify [ set nonumber ]
-set number
-
-" highlights parentheses
+set nocompatible
+set number relativenumber
 set showmatch
+let python_highlight_all=1
+"------------------------------------------------------------
+"------------------------------------------------------------
+"                         PLUGIN MANAGER
+" Install vim-plug
+" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"------------------------------------------------------------
+" vim-plug package manager
+call plug#begin('~/.vim/plugged')
+Plug 'joshdick/onedark.vim'
+Plug 'tpope/vim-surround'
+"------------------------------
+" fuzzy finder
+Plug '/usr/bin/fzf' " has installed in system
+Plug 'junegunn/fzf.vim'
+"------------------------------
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+" ------------------------------
+" Snippets
+Plug 'sirver/ultisnips'
+"Plug 'honza/vim-snippets'
+"------------------------------
+Plug 'jiangmiao/auto-pairs'
+"------------------------------
+" Syntax highlighting and indentation
+Plug 'sheerun/vim-polyglot'
+"------------------------------
+call plug#end()
 
-" show color display
-" if not, specify [ syntax off ]
-syntax on
-filetype indent plugin on
+"------------------------------------------------------------
+"------------------------------------------------------------
+"                         COLOR SCHEME
+" theme: https://github.com/joshdick/onedark.vim
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+"---------------
+colorscheme onedark
 
-" wrap lines
-" if not, specify [ set nowrap ]
+"------------------------------------------------------------
+"------------------------------------------------------------
+"               CODE FOLDING
+set foldmethod=indent
+set foldlevel=99
+"------------------------------------------------------------
+"               MISC
+"syntax on
+"filetype indent plugin on
+
+" Wrap lines
 "set wrap
-
-" ignore case when searching
 set ignorecase
-
-" highlight search results
 set hlsearch
-
-" 
 set incsearch
-
-" enable syntax highlighting
-syntax enable
-
-" auto indent
 "set autoindent
-
-" smart indent
 set smartindent
-
-" smart tab
 "set smarttab
-
-" tab length
-set tabstop=4
+" Tab length
+set ts=4
+set expandtab
 set shiftwidth=4
-"set expandtab
-
-" enable mouse wheel scrolling
+set expandtab
+set cursorline
+set colorcolumn=80
+" Enable mouse wheel scrolling
 set mouse=n
-" or also visual mode
-" set mouse=a
+" Or also visual mode
+"set mouse=a
+set encoding=utf-8
+set showcmd
+set laststatus=2
+" Let buffer be switched to another one without requiring to save it first
+set hidden
 
-" set for powerline-vim
-"let g:powerline_pycmd="py3"
-" enable statusline all the time
-"set laststatus=2
+" Zsh like <Tab> completion in command mode
+set wildmenu
+set wildmode=full
+" Show ruler
+set ruler
+set clipboard=unnamedplus
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+"------------------------------------------------------------
+"               KEYMAP
+"it is need for map <Space> key to leader key
+nnoremap <Space> <Nop>
+let mapleader=" "       "change leader key to <Space> key
+inoremap jj <Esc>
 
-" Airline fonts
-"let g:airline_powerline_fonts = 1
+" Copy selected text to system clipboard
+vnoremap <C-c> "+y
+map <C-p> "+P
+"------------------------------------------------------------
+"------------------------------------------------------------
+"               CONFIGURE FOR UltiSnips
+"must 'pip3 install --user --upgrade pynvim'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+"------------------------------------------------------------
 
-" NERDTree automatically open when vim starts up
-"autocmd vimenter * NERDTree
-
-" Enable syntax highlight for markdown file
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown

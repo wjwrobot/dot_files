@@ -1,215 +1,40 @@
-! ******************
-! urxvt config
-! ******************
+*.font: Hack Nerd Font:size=18
 
-! Disable Perl extension
-! If you do not use the Perl extension features, you can improve the security
-! and speed by disabling Perl extensions completely. 
-!URxvt.perl-ext:
-!URxvt.perl-ext-common:
-
-! Font spacing
-!URxvt.letterSpace: -1
-
-! -- Fonts -- !
-URxvt*font: xft:Hack Nerd Font:size=21, xft:WenQuanYi Micro Hei Mono:size=18:style=Regular, xft:FontAwesome:size=18,xft:Wuncon Siji:pixelsize=18, xos4 Terminess Powerline:size=18:style=Regular, xft:Hack:size=18
-
-! Input method (enable chinese character input on urxvt)
-URxvt*inputMethod: ibus
-URxvt*preeditType: OverTheSpot
-
-! scrollbar
-URxvt*scrollBar: false
-
-! disable the scrollback buffer for the secondary screen
-URxvt.secondaryScreen: 1
-URxvt.secondaryScroll: 0
-
-! True transparency
-!URxvt*depth: 32
-!URxvt*background: [50]#000000
-
-! Fake transparency
-! URxvt*shading: 0 to 99 darkens, 101 to 200 lightens
-!urxvt*transparent: true
-!urxvt*shading: 40
-
-! Scrollbar style - rxvt (default), plain (most compact), next, or xterm
-!URxvt.scrollstyle: plain
-
-! urlLauncher 
-URxvt*urlLauncher: firefox
-
-!!   ** Dark theme **
-! text
-! urxvt*foreground: #ABB2BF
-! ! background
-! !!urxvt*background: #282C34
-! urxvt*background: black
-! ! cursor
-! !urxvt*cursorColor: #d0d0d0
-
-! ! black & bright black
-! urxvt*color0: #1E2127
-! urxvt*color8: #5C6370
-! ! red
-! urxvt*color1: #E06C75
-! urxvt*color9: #E06C75
-! !urxvt*color9: #BE5046
-! ! green
-! urxvt*color2: #98C379
-! urxvt*color10: #98C379
-! ! yellow
-! urxvt*color3: #D19A66
-! urxvt*color11: #D19A66
-! !urxvt*color11: #E5C07B
-! ! blue
-! urxvt*color4: #61AFEF
-! urxvt*color12: #61AFEF
-! ! magenta
-! urxvt*color5: #C678DD
-! urxvt*color13: #C678DD
-! ! cyan
-! urxvt*color6: #56B6C2
-! urxvt*color14: #56B6C2
-! ! white
-! urxvt*color7: #ABB2BF
-! urxvt*color15: #FFFFFF
-
-! ******************
-! /urxvt config
-! examples
-! ******************
-! URxvt*termName:                       string
-! URxvt*geometry:                       geometry
-! URxvt*chdir:                          string
-! URxvt*reverseVideo:                   boolean
-! URxvt*loginShell:                     boolean
-! URxvt*jumpScroll:                     boolean
-! URxvt*skipScroll:                     boolean
-! URxvt*pastableTabs:                   boolean
-! URxvt*scrollstyle:                    mode
-! URxvt*scrollBar:                      boolean
-! URxvt*scrollBar_right:                boolean
-! URxvt*scrollBar_floating:             boolean
-! URxvt*scrollBar_align:                mode
-! URxvt*thickness:                      number
-! URxvt*scrollTtyOutput:                boolean
-! URxvt*scrollTtyKeypress:              boolean
-! URxvt*scrollWithBuffer:               boolean
-! URxvt*inheritPixmap:                  boolean
-! URxvt*transparent:                    boolean
-! URxvt*tintColor:                      color
-! URxvt*shading:                        number
-! URxvt*blurRadius:                     HxV
-! URxvt*fading:                         number
-! URxvt*fadeColor:                      color
-! URxvt*utmpInhibit:                    boolean
-! URxvt*urgentOnBell:                   boolean
-! URxvt*visualBell:                     boolean
-! URxvt*mapAlert:                       boolean
-! URxvt*meta8:                          boolean
-! URxvt*mouseWheelScrollPage:           boolean
-! URxvt*tripleclickwords:               boolean
-! URxvt*insecure:                       boolean
-! URxvt*cursorUnderline:                boolean
-! URxvt*cursorBlink:                    boolean
-! URxvt*pointerBlank:                   boolean
-
-
-!! *************************************************
-!One Dark                       One Light
-!
-!Black:          #1E2127        Black:          #000000
-!Bright Black:   #5C6370        Bright Black:   #383A42
-!Red:            #E06C75        Red:            #E45649
-!Bright Red:     #E06C75        Bright Red:     #E45649
-!Green:          #98C379        Green:          #50A14F
-!Bright Green:   #98C379        Bright Green:   #50A14F
-!Yellow:         #D19A66        Yellow:         #986801
-!Bright Yellow:  #D19A66        Bright Yellow:  #986801
-!Blue:           #61AFEF        Blue:           #4078F2
-!Light Blue:     #61AFEF        Light Blue:     #4078F2
-!Magenta:        #C678DD        Magenta:        #A626A4
-!Light Magenta:  #C678DD        Light Magenta:  #A626A4
-!Cyan:           #56B6C2        Cyan:           #0184BC
-!Light Cyan:     #56B6C2        Light Cyan:     #0184BC
-!White:          #ABB2BF        White:          #A0A1A7
-!Bright White:   #FFFFFF        Bright White:   #FFFFFF
-!Text:           #ABB2BF        Text:           #383A42
-!Bold Text:      #ABB2BF        Bold Text:      #A0A1A7
-!Selection:      #3A3F4B        Selection:      #3A3F4B
-!Cursor:         #5C6370        Cursor:         #383A42
-!Background: #1E2127 Background: #F9F9F9
-! from https://github.com/nathanbuchar/atom-one-dark-terminal/blob/master/COLORS
-!! ****************************************************
-!! ****************************************************
-! Another theme
-! Background color
-!URxvt*background: black
-!!URxvt*background: #3f3f3f
-
-! Font color
-!URxvt*foreground: white
-!!URxvt*foreground: #00FF00
-
-!URxvt*color0: black
-!!URxvt*color1: red3
-!URxvt*color1: #CD0000
-!URxvt*color2: green3
-!!URxvt*color3: yellow3
-!URxvt*color3: #C4A000
-!URxvt*color4: blue2
-!!URxvt*color4: #3465A4
-!URxvt*color5: magenta3
-!URxvt*color6: cyan3
-!URxvt*color7: gray90
-!URxvt*color8: grey50
-!URxvt*color9: red
-!URxvt*color10: green
-!URxvt*color11: yellow
-!!URxvt*color12: blue
-!URxvt*color12: #3465A4
-!URxvt*color13: magenta
-!URxvt*color14: cyan
-!URxvt*color15: white
-
-!! -------------------------------------------
-!! generated from terminal.sexy
-
+! One Dark Theme
 ! special
-URxvt*foreground:   #c5c8c6
-URxvt*background:   #1d1f21
-URxvt*cursorColor:  #c5c8c6
+*.foreground:   #abb2bf
+*.background:   #282c34
+*.cursorColor:  #abb2bf
 
 ! black
-URxvt*color0:       #282a2e
-URxvt*color8:       #373b41
+*.color0:       #282c34
+*.color8:       #5c6370
 
 ! red
-URxvt*color1:       #a54242
-URxvt*color9:       #cc6666
+*.color1:       #e06c75
+*.color9:       #be5046
 
 ! green
-URxvt*color2:       #8c9440
-URxvt*color10:      #b5bd68
+*.color2:       #98c379
+*.color10:      #7a9f60
 
 ! yellow
-URxvt*color3:       #de935f
-URxvt*color11:      #f0c674
+*.color3:       #e5c07b
+*.color11:      #d19a66
 
 ! blue
-URxvt*color4:       #5f819d
-URxvt*color12:      #81a2be
+*.color4:       #61afef
+*.color12:      #3b84c0
 
 ! magenta
-URxvt*color5:       #85678f
-URxvt*color13:      #b294bb
+*.color5:       #c678dd
+*.color13:      #9a52af
 
 ! cyan
-URxvt*color6:       #5e8d87
-URxvt*color14:      #8abeb7
+*.color6:       #56b6c2
+*.color14:      #3c909b
 
 ! white
-URxvt*color7:       #707880
-URxvt*color15:      #c5c8c6
+*.color7:       #abb2bf
+*.color15:      #828997
+

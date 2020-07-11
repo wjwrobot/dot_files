@@ -1,6 +1,8 @@
 # load resource file and merge with the current settings
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-# startup ibus daemon
-ibus-daemon --xim &
+
+# modify keymaps
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
 # auto enter i3 window manager for nvidia GPU
 exec i3

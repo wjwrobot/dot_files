@@ -1,1 +1,4 @@
 QT_QPA_PLATFORMTHEME=qt5ct
+GTK_IM_MODULE=fcitx
+XMODIFIERS="@im=fcitx"
+QT_IM_MODULE=fcitx
