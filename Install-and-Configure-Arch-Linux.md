@@ -396,6 +396,11 @@ sudo chmod 744 /usr/local/bin/ssr
 ssr install
 ssr config
 ```
+### Install v2ray
+```sh
+sudo pacman -S v2ray
+yay -S qv2ray
+```
 
 ### Wireless configure
 
@@ -933,7 +938,7 @@ start/enable the `netctl-ifplugd@interface.service` systemd unit. (note: change 
 
 ### Dict
 ```sh
-sudo pacman -S goldendict
+sudo pacman -S goldendict translate-shell
 ```
 
 ### ADB
@@ -1025,6 +1030,13 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_password'
 ### tldr
 ```sh
 sudo pacman -S tldr
+```
+### rclone
+```sh
+sudo pacman -S rclone
+rclone config
+rclone lsd remote:
+rclone copy ~/Notes GoogleDrive:ArchNote
 ```
 
 ### References

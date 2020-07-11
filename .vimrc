@@ -11,7 +11,8 @@ let python_highlight_all=1
 "------------------------------------------------------------
 " vim-plug package manager
 call plug#begin('~/.vim/plugged')
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'tpope/vim-surround'
 "------------------------------
 " fuzzy finder
@@ -31,11 +32,17 @@ Plug 'jiangmiao/auto-pairs'
 " Syntax highlighting and indentation
 Plug 'sheerun/vim-polyglot'
 "------------------------------
+"------------------------------
+" color scheme for use with pywal
+"Plug 'dylanaraps/wal.vim'
+"colorscheme wal
+"set background=dark
 call plug#end()
 
 "------------------------------------------------------------
 "------------------------------------------------------------
 "                         COLOR SCHEME
+"--------------------
 " theme: https://github.com/joshdick/onedark.vim
 if (empty($TMUX))
   if (has("nvim"))
@@ -46,7 +53,9 @@ if (empty($TMUX))
   endif
 endif
 "---------------
-colorscheme onedark
+"colorscheme onedark
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
 
 "------------------------------------------------------------
 "------------------------------------------------------------
@@ -109,4 +118,14 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 "------------------------------------------------------------
+" Latex
+"               CONFIGURE FOR vimtex
+Plug 'lervag/vimtex'
+    let g:tex_flavor='latex'
+    let g:vimtex_view_method='zathura'
+    let g:vimtex_quickfix_mode=0
 
+Plug 'KeitaNakamura/tex-conceal.vim'
+    set conceallevel=1
+    let g:tex_conceal='abdmg'
+    hi Conceal ctermbg=none
