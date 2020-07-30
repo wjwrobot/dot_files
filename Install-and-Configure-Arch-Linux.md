@@ -169,6 +169,10 @@ Use the **pacstrap** script to install the **base** and **base-devel** package g
 ```bash
 pacstrap /mnt base base-devel
 ```
+wifi:
+```bash
+pacstrap /mnt dialog wpa_supplicant dhcpcd
+```
 
 ------------------
 
@@ -195,7 +199,6 @@ arch-chroot /mnt
 ### Configure wifi
 
 ```bash
-pacman -S dialog wpa_suppliant
 wifi-menu
 ```
 
@@ -239,6 +242,11 @@ echo 'Arch' > /etc/hostname
 
 ```bash
 echo -e "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\tArch.localdomain\tArch" > /etc/hosts
+```
+
+### Needed programs
+```bash
+sudo pacman -S linux linux-firmware mkinitcpio
 ```
 
 If the system has a permament IP address, it should be used instead of **127.0.1.1** .
@@ -348,7 +356,7 @@ If you want to change console font, put font files in the **/usr/share/kbd/conso
 
 ```bash
 ls /usr/share/kbd/consolefonts
-echo "FONT=sun12x22\nFONT_MAP=8859-2" > /etc/vconsole.conf
+echo -e "FONT=sun12x22\nFONT_MAP=8859-2" > /etc/vconsole.conf
 ```
 
 ### Graphical user interface
@@ -408,7 +416,7 @@ yay -S qv2ray
 
 ### Wireless configure
 
-Install **dialog** and **wpa_suppliant** for using **wifi-menu** . (or optionally Install **networkmanager** )
+Install **dialog**, **wpa_supplicant** and **dhcpcd** for using **wifi-menu** . (or optionally Install **networkmanager** )
 
 ```bash
 sudo pacman -S dialog wpa_suppliant
@@ -653,8 +661,8 @@ docker start -i tf	#start container named tf with interactive mode
 Installing anaconda3 firstly, then create an environment named "pytorch" for pytorch compatible with cuda 10, lastly, enter this environment.
 
 ```bash
-wget http://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
-./Anaconda3-2018.12-Linux-x86_64.sh
+wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+./Anaconda3-2020.07-Linux-x86_64.sh
 
 #conda create -n pytorch pytorch torchvision cuda100 -c pytorch
 conda create -n pytorch pytorch torchvision cpuonly -c pytorch
@@ -878,14 +886,14 @@ make install
 ```
 ### Compositor
 ```bash
-sudo pacman -S compton
+sudo pacman -S picom
 ```
 
 ### Swap Caps and Esc key
 For console:
 ```bash
 sudo mkdir -p /usr/local/share/kbd/keymaps
-sudo echo "keycode 1 = Caps_Lock\nkeycode 58 = Escape" > /usr/local/share/kbd/keymaps/personal.map
+sudo echo -e "keycode 1 = Caps_Lock\nkeycode 58 = Escape" > /usr/local/share/kbd/keymaps/personal.map
 
 sudo echo "KEYMAP=/usr/local/share/kbd/keymaps/personal.map" >> /etc/vconsole.conf
 ```
@@ -932,7 +940,7 @@ nmcli device wifi connect your_wifi_SSID password your_password
 #### netctl
 - wireless
 ```sh
-sudo pacman -S dialog wpa_suppliant dhcpcd
+sudo pacman -S dialog wpa_supplicant dhcpcd
 ```
 - wired
 ```sh
@@ -959,13 +967,14 @@ yay -S nvidia-xrun
 and go to configure .nvidia-xinitrc
 
 ### VirtualBox
+
+(note: while installing select *virtualbox-host-modules-arch*)
 ```sh
 sudo pacman -S virtualbox
 systemctl start systemd-modules-load.service
 sudo modprobe vboxdrv
 yay -S virtualbox-ext-oracle
 ```
-(note: while installing select *virtualbox-host-modules-arch*)
 
 ### Misc
 
