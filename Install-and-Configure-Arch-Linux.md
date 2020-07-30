@@ -975,6 +975,9 @@ systemctl start systemd-modules-load.service
 sudo modprobe vboxdrv
 yay -S virtualbox-ext-oracle
 ```
+enable **Auto-resize Guest Display**:
+*Devices* -> *Insert Guest Additions CD image*,
+then go to guest system (i.e. your installed windows) to install the downloaded file *CD Drive VirtualBox Guest Additions*.
 
 ### Misc
 
