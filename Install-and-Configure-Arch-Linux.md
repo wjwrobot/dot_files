@@ -371,6 +371,10 @@ configure **~/.xinitrc** file
 
 Install i3-gaps and configure to start from **~/.xinitrc** . (**rofi** for replacing d-menu, **feh** for setting wallpaper, **light** for brightness control, **scrot** for screenshot, **i3blocks** for replacing i3status, **acpi** for i3blocks's battery module)
 
+for "light":
+```bash
+usermod -aG video wjw
+```
 ```bash
 sudo pacman -S i3-gaps i3blocks rofi feh light scrot acpi
 echo 'exec i3' > ~/.xinitrc
@@ -652,7 +656,8 @@ Installing anaconda3 firstly, then create an environment named "pytorch" for pyt
 wget http://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh
 ./Anaconda3-2018.12-Linux-x86_64.sh
 
-conda create -n pytorch pytorch torchvision cuda100 -c pytorch
+#conda create -n pytorch pytorch torchvision cuda100 -c pytorch
+conda create -n pytorch pytorch torchvision cpuonly -c pytorch
 source activate pytorch
 ```
 
@@ -927,7 +932,7 @@ nmcli device wifi connect your_wifi_SSID password your_password
 #### netctl
 - wireless
 ```sh
-sudo pacman -S dialog wpa_suppliant
+sudo pacman -S dialog wpa_suppliant dhcpcd
 ```
 - wired
 ```sh
