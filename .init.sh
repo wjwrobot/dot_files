@@ -8,5 +8,5 @@
 
 #ibus-daemon --xim &                        #ibus im
 (fcitx &) &> /dev/null                        #fcitx im
-sudo wifi-menu                              #wifi
 picom -b &> /dev/null
+sudo wifi-menu                              #wifi

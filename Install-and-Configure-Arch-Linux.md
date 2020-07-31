@@ -976,9 +976,15 @@ sudo modprobe vboxdrv
 yay -S virtualbox-ext-oracle
 sudo usermod -aG vboxusers $USER
 ```
-enable **Auto-resize Guest Display**:
+Enable **Auto-resize Guest Display**:
 *Devices* -> *Insert Guest Additions CD image*,
 then go to guest system (i.e. your installed windows) to install the downloaded file *CD Drive VirtualBox Guest Additions*.
+
+Enable recognize USB:
+- Install *virtualbox-ext-oracle*
+- `sudo usermod -aG vboxusers $USER`
+- go to the USB setting button belong to which virtual machine you want to use,
+before start the machine, add your USB by clicking the first button in the rigtht side.
 
 ### Misc
 
@@ -1056,7 +1062,10 @@ rclone config
 rclone lsd remote:
 rclone copy ~/Notes GoogleDrive:ArchNote
 ```
-
+###
+```bash
+yay -S gitkraken
+```
 ### References
 
 1. [Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
