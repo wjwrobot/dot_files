@@ -732,7 +732,7 @@ vim plugin manager: vim-plug
 code-searching tool: the_silver_searcher (**ag**)
 Plugins for making a IDE: coc.vim and its extensions (coc-python, coc-snippets, coc-vimtex)
 ```bash
-sudo pacman -S vim neovim
+sudo pacman -S vim neovim xclip
 sudo pacman -S the_silver_searcher
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -974,6 +974,7 @@ sudo pacman -S virtualbox
 systemctl start systemd-modules-load.service
 sudo modprobe vboxdrv
 yay -S virtualbox-ext-oracle
+sudo usermod -aG vboxusers $USER
 ```
 enable **Auto-resize Guest Display**:
 *Devices* -> *Insert Guest Additions CD image*,
