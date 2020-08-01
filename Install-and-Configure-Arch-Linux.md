@@ -795,6 +795,21 @@ cd python-language-server/src/LanguageServer/Impl
 dotnet build -c Release
 ```
 
+### Openssh
+
+Enable ssh daemon:
+The *sshd*'s config file located in */etc/ssh/sshd_config*,
+we can change the port from 22 to other port:
+```bash
+sudo systemctl start sshd
+sudo systemctl enable sshd
+```
+(connect from another machine:
+```bash
+ssh -p SSH_PORT USERNAME@IP_ADDRESS
+```
+)
+
 ### Book Reader
 ```bash
 sudo pacman -S zathura zathura-pdf-poppler zathura-pdf-mupdf
@@ -979,6 +994,7 @@ sudo usermod -aG vboxusers $USER
 Enable **Auto-resize Guest Display**:
 *Devices* -> *Insert Guest Additions CD image*,
 then go to guest system (i.e. your installed windows) to install the downloaded file *CD Drive VirtualBox Guest Additions*.
+(select amd64)
 
 Enable recognize USB:
 - Install *virtualbox-ext-oracle*
