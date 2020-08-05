@@ -256,12 +256,6 @@ echo 'Arch' > /etc/hostname
 ```bash
 echo -e "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\tArch.localdomain\tArch" > /etc/hosts
 ```
-
-### Needed programs
-```bash
-sudo pacman -S linux linux-firmware mkinitcpio
-```
-
 If the system has a permament IP address, it should be used instead of **127.0.1.1** .
 
 ### Initramfs
@@ -294,7 +288,7 @@ pacman -S grub efibootmgr
 
 (Mount the EFI system partition at mount point, for example, ***/boot/efi*** )
 
-#### For dual with Windows
+#### For dual boot with Windows
 ```bash
 pacman -S os-prober dosfstools
 ```
@@ -304,7 +298,7 @@ pacman -S os-prober dosfstools
 Install the GRUB EFI application **grubx64.efi** to **/boot/efi*/EFI/GRUB/** and install its modules to **/boot/grub/x86_64-efi/** .
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux
 ```
 
 (After the above install completed the main GRUB directory is located at **/boot/grub/** . Note that **grub-install** also tries to create an entry tin the fireware boot manager, named **GRUB** in the above example.)
@@ -340,6 +334,9 @@ reboot
 
 ## Post-installation
 
+```bash
+pacman -S vi vim
+```
 ### Add a new user
 
 ```bash
@@ -437,7 +434,7 @@ yay -S qv2ray
 Install **dialog**, **wpa_supplicant** and **dhcpcd** for using **wifi-menu** . (or optionally Install **networkmanager** )
 
 ```bash
-sudo pacman -S dialog wpa_suppliant
+sudo pacman -S dialog wpa_supplicant
 ```
 
 Enabling wifi auto connecting when boot. (use **netctl**)
