@@ -139,11 +139,15 @@ mount /dev/sda2 /mnt
 Create mount points for any remaining partitions and mount them accordingly
 
 ```bash
-mkdir /mnt/boot/efi
+mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
 
 mkdir /mnt/home
 mount /dev/sda3 /mnt/home
+
+# Assume your Windows system EFI patition /dev/sda4
+mkdir -p /mnt/boot/efi-win
+mount /dev/sda4 /mnt/boot/efi-win
 ```
 
 **genfstab** will later detect mounted file systems and swap space.
@@ -169,9 +173,13 @@ Use the **pacstrap** script to install the **base** and **base-devel** package g
 ```bash
 pacstrap /mnt base base-devel
 ```
+Linux with firmware:
+```bash
+pacstrap /mnt linux linux-firmware
+```
 wifi:
 ```bash
-pacstrap /mnt dialog wpa_supplicant dhcpcd
+pacstrap /mnt dialog wpa_supplicant dhcpcd netctl networkmanager
 ```
 
 ------------------
@@ -200,6 +208,11 @@ arch-chroot /mnt
 
 ```bash
 wifi-menu
+```
+or
+```bash
+systemctl start NetworkManager
+nmcli device wifi connect your_wifi_SSID password your_password
 ```
 
 ### Time zone
@@ -280,6 +293,11 @@ pacman -S grub efibootmgr
 **GRUB** is the bootloader while **efibootmgr** is used by the GRUB installation script to write boot entries to **NVRAM** .
 
 (Mount the EFI system partition at mount point, for example, ***/boot/efi*** )
+
+#### For dual with Windows
+```bash
+pacman -S os-prober dosfstools
+```
 
 #### Install the GRUB EFI application
 
@@ -384,7 +402,7 @@ for "light":
 usermod -aG video wjw
 ```
 ```bash
-sudo pacman -S i3-gaps i3blocks rofi feh light scrot acpi
+sudo pacman -S i3-gaps i3blocks i3locks rofi feh light scrot acpi termite bc
 echo 'exec i3' > ~/.xinitrc
 ```
 
@@ -731,6 +749,12 @@ sudo pacman -S fzf
 vim plugin manager: vim-plug
 code-searching tool: the_silver_searcher (**ag**)
 Plugins for making a IDE: coc.vim and its extensions (coc-python, coc-snippets, coc-vimtex)
+
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
 ```bash
 sudo pacman -S vim neovim xclip
 sudo pacman -S the_silver_searcher
@@ -740,6 +764,11 @@ sudo pacman -S pip3
 sudo pip3 install python-language-server
 yay -S ccls-git
 pip3 install --user --upgrade pynvim
+```
+
+```bash
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
 ```sh
@@ -796,6 +825,9 @@ dotnet build -c Release
 ```
 
 ### Openssh
+```bash
+sudo pacman -S openssh
+```
 
 Enable ssh daemon:
 The *sshd*'s config file located in */etc/ssh/sshd_config*,
@@ -1012,6 +1044,19 @@ Memory Debugging:
 ```sh
 sudo pacman -S valgrind
 ```
+Oh-my-zsh:
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion
+
+cd ~/dot_files/.oh-my-zsh/custom
+cp my_custom.zsh ~/.oh-my-zsh/custom
+cp themes/my_lambda.zsh-theme ~/.oh-my-zsh/custom/themes
+```
+
 Snap:
 ```sh
 yay -S snapd
@@ -1081,6 +1126,17 @@ rclone copy ~/Notes GoogleDrive:ArchNote
 ###
 ```bash
 yay -S gitkraken
+```
+### Useful command
+```bash
+# extract .gz file with striping first two dir
+tar xzvf other.tar.gz --strip-components=2
+
+# start chromium with proxy
+chromium --proxy-server="socks://localhost:1080"
+
+# change shell to zsh
+chsh -s /bin/zsh $USER
 ```
 ### References
 
