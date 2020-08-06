@@ -18,3 +18,15 @@
 install () {
 pacman -Syu
 }
+
+post-install () {
+pacman -S --noconfirm vi vim wqy-microhei ttf-dejavu firefox
+useradd -m -G wheel -s /bin/bash wjw
+echo -e "FONT=sun12x22\nFONT_MAP=8859-2" > /etc/vconsole.conf
+pacman -S --noconfirm xorg-server xorg-xinit xorg-xinput
+pacman -S --noconfirm i3-gaps i3blocks i3locks rofi feh light scrot acpi termite bc pulsemixer
+
+echo -e "defaults.pcm.card 1\ndefaults.pcm.device 0\ndefaults.ctl.card 1" > /etc/asound.conf
+
+pacman -S --noconfirm ranger highlight xclip
+}

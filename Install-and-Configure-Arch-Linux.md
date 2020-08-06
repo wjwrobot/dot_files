@@ -429,6 +429,23 @@ sudo pacman -S v2ray
 yay -S qv2ray
 ```
 
+### Install trojan
+
+(server deploy:
+```bash
+wget --no-check-certificate https://raw.githubusercontent.com/V2RaySSR/Trojan/master/Trojan.sh && chmod +x Trojan.sh && ./Trojan.sh
+```
+)
+
+Download the file display in the server,then
+```bash
+sudo pacman -S trojan
+unzip trojan-cli.zip
+cd usr/src/trojan-cli
+sudo cp config.json fullchain.cer /etc/trojan
+systemctl start trojan
+```
+
 ### Wireless configure
 
 Install **dialog**, **wpa_supplicant** and **dhcpcd** for using **wifi-menu** . (or optionally Install **networkmanager** )
