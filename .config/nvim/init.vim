@@ -11,7 +11,8 @@ let python_highlight_all=1
 "------------------------------------------------------------
 " vim-plug package manager
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
+Plug 'patstockwell/vim-monokai-tasty'
 Plug 'tpope/vim-surround'
 "------------------------------
 " Intellisense engine, full lsp support as VSCode
@@ -66,7 +67,9 @@ if (empty($TMUX))
   endif
 endif
 "---------------
-colorscheme onedark
+"colorscheme onedark
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty
 
 "------------------------------------------------------------
 "------------------------------------------------------------
