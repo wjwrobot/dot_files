@@ -770,16 +770,15 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 ```
 
 ```bash
-sudo pacman -S vim neovim xclip
+sudo pacman -S vim neovim xclip python-pip
 sudo pacman -S the_silver_searcher
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-sudo pacman -S pip3
 sudo pip3 install python-language-server
 yay -S ccls-git
-pip3 install --user --upgrade pynvim
+#pip3 install --user --upgrade pynvim
+python -m pip install --user --upgrade pynvim
 ```
-
 ```bash
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -1137,10 +1136,15 @@ rclone config
 rclone lsd remote:
 rclone copy ~/Notes GoogleDrive:ArchNote
 ```
-###
+### Git GUI
 ```bash
 yay -S gitkraken
 ```
+###
+```bash
+sudo pacman -S nodejs npm
+```
+
 ### Useful command
 ```bash
 # extract .gz file with striping first two dir
