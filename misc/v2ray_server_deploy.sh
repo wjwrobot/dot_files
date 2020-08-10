@@ -30,11 +30,6 @@ function install() {
    # CHECK=$(grep SELINUX= /etc/selinux/config | grep -v "#")
     real_addr=`ping ${domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
     local_addr=`curl ipv4.icanhazip.com`
-    if [ $real_addr == $local_addr ] ; then
-        green "=========================================="
-        green "       域名解析正常，开始安装v2ray"
-        green "=========================================="
-        sleep 1s
 
     ## Install SSL certification
     # install certbot
@@ -290,7 +285,7 @@ function main() {
     # install ufw
     yum install -y epel-release && yum install -y ufw
     # only enable necessary ports
-    ufw disable && ufw allow ssh && ufw allow http && ufw allow https && ufw enable
+    #ufw disable && ufw allow ssh && ufw allow http && ufw allow https && ufw enable
 }
 
 main
