@@ -28,7 +28,7 @@ red(){
 
 function install() {
    # CHECK=$(grep SELINUX= /etc/selinux/config | grep -v "#")
-    real_addr=`ping ${your_domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
+    real_addr=`ping ${domain} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
     local_addr=`curl ipv4.icanhazip.com`
     if [ $real_addr == $local_addr ] ; then
         green "=========================================="
@@ -38,36 +38,28 @@ function install() {
 
     ## Install SSL certification
     # install certbot
-    yello "正在安装certbot"
+    yellow "正在安装certbot"
     yum install -y python36 unzip && pip3 install certbot
     # stop firewall
-    yello "停止防火墙"
+    yellow "停止防火墙"
     systemctl stop firewalld && systemctl disable firewalld
     # get a SSL certification
     read -p "请输入用于申请SSL证书的邮箱：" mail
-    yello "正在申请SSL证书"
-    certbot certonly --standalone --agree-tos -n -d www.${domain} -d ${domain} -m ${mail}
+    yellow "正在申请SSL证书"
+    certbot certonly --standalone --agree-tos -n -d ${domain} -d ${domain:4} -m ${mail}
     # auto update certification every two months
     echo "0 0 1 */2 * service nginx stop; certbot renew; service nginx start;" | crontab
 
-    yello "正在安装nginx与v2ray"
+    yellow "正在安装nginx与v2ray"
     ## Install nginx and v2ray
     yum install -y nginx
     yum install -y curl && bash -c "$(curl -L -s https://install.direct/go.sh)"
     # stop SELinux for allowing Nginx to transports dataflow to v2ray
-    yello "正在停止SELinux"
+    yellow "正在停止SELinux"
     setsebool -P httpd_can_network_connect 1 && setenforce 0
-    yello "启动v2ray与nginx服务"
 
     # ====================
-    yello "(可选）设置防火墙,只允许ssh,http/s端口"
-    ## Optional: Setting up firewall
-    # install ufw
-    yum install -y epel-release && yum install -y ufw
-    # only enable necessary ports
-    ufw disable && ufw allow ssh && ufw allow http && ufw allow https && ufw enable
-
-    yello "（可选）开启BBR加速"
+    yellow "（可选）开启BBR加速"
     ## Optional: BBR speedup
     bash -c 'echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf'
     bash -c 'echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf'
@@ -267,12 +259,12 @@ function main() {
     UUID=$(uuidgen)
     rand_path=${UUID::7} # first 7 characters
     rand_config_file_path=${UUID:3:5}
-
-    install()
-    v2ray_config()
-    nginx_config()
-
-    yello "（可选）放置网站模板"
+    #====================
+    install
+    v2ray_config
+    nginx_config
+    #====================
+    yellow "（可选）放置网站模板"
     ## Setting up website
     # get a website template and put it in /usr/share/nginx/html/
     wget https://github.com/wjwrobot/wjwrobot.github.io/archive/master.zip
@@ -280,15 +272,26 @@ function main() {
     mv wjwrobot.github.io-master/* /usr/share/nginx/html/
     rm master.zip && rm -d wjwrobot.github.io-master
     mkdir -p /usr/share/nginx/html/${rand_config_file_path}
-    generate_client_file()
+    #====================
+    generate_client_file
+    #====================
     mv /usr/share/nginx/html/config.json /usr/share/nginx/html/${rand_config_file_path}/config.json
     green "客户端配置文件放置在http://${domain}/${rand_config_file_path}/config.json"
 
+    yellow "启动v2ray与nginx服务"
     ## Start services
     service v2ray start
     service nginx start
     # test v2ray configure file
     #/usr/bin/v2ray/v2ray -test -config=/etc/v2ray/config.json
+
+    yellow "(可选）设置防火墙,只允许ssh,http/s端口"
+    ## Optional: Setting up firewall
+    # install ufw
+    yum install -y epel-release && yum install -y ufw
+    # only enable necessary ports
+    ufw disable && ufw allow ssh && ufw allow http && ufw allow https && ufw enable
 }
 
 main
+
