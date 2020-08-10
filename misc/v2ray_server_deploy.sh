@@ -118,8 +118,8 @@ function nginx_config() {
         server_name $domain;
 
         listen 80 reuseport fastopen=10;
-        rewrite ^(.*) https://$server_name$1 permanent;
-        if ($request_method  !~ ^(POST|GET)$) { return  501; }
+        rewrite ^(.*) https://\$server_name\$1 permanent;
+        if (\$request_method  !~ ^(POST|GET)\$) { return  501; }
         autoindex off;
         server_tokens off;
     }
@@ -137,9 +137,9 @@ function nginx_config() {
             proxy_pass http://127.0.0.1:8686;
             proxy_redirect off;
             proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Upgrade \$http_upgrade;
             proxy_set_header Connection "upgrade";
-            proxy_set_header Host $host;
+            proxy_set_header Host \$host;
 
             sendfile on;
             tcp_nopush on;
@@ -150,7 +150,7 @@ function nginx_config() {
         }
 
         listen 443 ssl reuseport fastopen=10;
-        server_name $server_name;
+        server_name \$server_name;
         charset utf-8;
 
         sendfile on;
@@ -172,7 +172,7 @@ function nginx_config() {
         resolver 8.8.8.8 8.8.4.4 valid=300s;
         resolver_timeout 10s;
 
-        if ($request_method  !~ ^(POST|GET)$) { return 501; }
+        if (\$request_method  !~ ^(POST|GET)\$) { return 501; }
         add_header X-Frame-Options DENY;
         add_header X-XSS-Protection "1; mode=block";
         add_header X-Content-Type-Options nosniff;
@@ -181,7 +181,7 @@ function nginx_config() {
         server_tokens off;
 
         index index.html index.htm  index.php;
-        location ~ .*\.(js|jpg|JPG|jpeg|JPEG|css|bmp|gif|GIF|png)$ { access_log off; }
+        location ~ .*\.(js|jpg|JPG|jpeg|JPEG|css|bmp|gif|GIF|png)\$ { access_log off; }
         location / { index index.html; }
     }
 EOF
