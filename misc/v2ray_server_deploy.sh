@@ -65,48 +65,20 @@ function install() {
 function v2ray_config() {
     cat > /etc/v2ray/config.json <<-EOF
 {
-    "inbounds": [
-        {
-            "protocol": "vmess",
-            "listen": "127.0.0.1",
-            "port": 8686,
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$UUID"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "wsSettings": {
-                    "path": "/$rand_path"
-                }
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "settings": {},
-            "tag": "direct"
-        },
-        {
-            "protocol": "blackhole",
-            "settings": {},
-            "tag": "blocked"
-        }
-    ],
-    "routing": {
-        "domainStrategy": "IPOnDemand",
-        "rules": [
-            {
-                "domain": [],
-                "type": "field",
-                "outboundTag": "blocked"
-            }
-        ]
+"inbound": {
+    "protocol": "vmess",
+    "listen": "127.0.0.1",
+ "port": 8686,
+ "settings": {"clients": [
+        {"id": "$UUID"}
+    ]},
+ "streamSettings": {
+ "network": "ws",
+ "wsSettings": {"path": "/$rand_path"}
     }
+},
+
+"outbound": {"protocol": "freedom"}
 }
 EOF
 }
