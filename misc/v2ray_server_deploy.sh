@@ -39,7 +39,6 @@ function install() {
     yellow "停止防火墙"
     systemctl stop firewalld && systemctl disable firewalld
     # get a SSL certification
-    read -p "请输入用于申请SSL证书的邮箱：" mail
     yellow "正在申请SSL证书"
     certbot certonly --standalone --agree-tos -n -d ${domain} -d ${domain:4} -m ${mail}
     # auto update certification every two months
@@ -223,6 +222,11 @@ function main() {
     yellow "请输入绑定到本VPS的域名"
     green "======================="
     read domain
+    green "======================="
+    yellow "请输入用于申请SSL证书的邮箱"
+    green "======================="
+    read mail
+
     UUID=$(uuidgen)
     rand_path=${UUID::7} # first 7 characters
     rand_config_file_path=${UUID:3:5}
