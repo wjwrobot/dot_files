@@ -64,20 +64,48 @@ function install() {
 function v2ray_config() {
     cat > /etc/v2ray/config.json <<-EOF
 {
-"inbound": {
-    "protocol": "vmess",
-    "listen": "127.0.0.1",
- "port": 8686,
- "settings": {"clients": [
-        {"id": "$UUID"}
-    ]},
- "streamSettings": {
- "network": "ws",
- "wsSettings": {"path": "/$rand_path"}
+    "inbounds": [
+        {
+            "protocol": "vmess",
+            "listen": "127.0.0.1",
+            "port": 8686,
+            "settings": {
+                "clients": [
+                    {
+                        "id": "$UUID"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "wsSettings": {
+                    "path": "/$rand_path"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom",
+            "settings": {},
+            "tag": "direct"
+        },
+        {
+            "protocol": "blackhole",
+            "settings": {},
+            "tag": "blocked"
+        }
+    ],
+    "routing": {
+        "domainStrategy": "IPOnDemand",
+        "rules": [
+            {
+                "domain": [],
+                "type": "field",
+                "outboundTag": "blocked"
+            }
+        ]
     }
-},
-
-"outbound": {"protocol": "freedom"}
 }
 EOF
 }
@@ -226,6 +254,7 @@ function main() {
     yellow "请输入用于申请SSL证书的邮箱"
     green "======================="
     read mail
+    green "======================="
 
     UUID=$(uuidgen)
     rand_path=${UUID::7} # first 7 characters
@@ -250,8 +279,8 @@ function main() {
 
     yellow "启动v2ray与nginx服务"
     ## Start services
-    service v2ray start
-    service nginx start
+    systemctl start v2ray
+    systemctl start nginx
     # test v2ray configure file
     #/usr/bin/v2ray/v2ray -test -config=/etc/v2ray/config.json
 
@@ -260,7 +289,9 @@ function main() {
     # install ufw
     yum install -y epel-release && yum install -y ufw
     # only enable necessary ports
-    #ufw disable && ufw allow ssh && ufw allow http && ufw allow https && ufw enable
+    ufw disable && ufw allow ssh && ufw allow http && ufw allow https && ufw enable
+    systemctl restart nginx
+    systemctl restart v2ray
 
     green "客户端配置文件放置在http://${domain}/${rand_config_file_path}/config.json"
 }
