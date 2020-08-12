@@ -64,48 +64,20 @@ function install() {
 function v2ray_config() {
     cat > /etc/v2ray/config.json <<-EOF
 {
-    "inbounds": [
-        {
-            "protocol": "vmess",
-            "listen": "127.0.0.1",
-            "port": 8686,
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$UUID"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "ws",
-                "wsSettings": {
-                    "path": "/$rand_path"
-                }
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "settings": {},
-            "tag": "direct"
-        },
-        {
-            "protocol": "blackhole",
-            "settings": {},
-            "tag": "blocked"
-        }
-    ],
-    "routing": {
-        "domainStrategy": "IPOnDemand",
-        "rules": [
-            {
-                "domain": [],
-                "type": "field",
-                "outboundTag": "blocked"
-            }
-        ]
+"inbound": {
+    "protocol": "vmess",
+    "listen": "127.0.0.1",
+ "port": 8686,
+ "settings": {"clients": [
+        {"id": "$UUID"}
+    ]},
+ "streamSettings": {
+ "network": "ws",
+ "wsSettings": {"path": "/$rand_path"}
     }
+},
+
+"outbound": {"protocol": "freedom"}
 }
 EOF
 }
@@ -284,14 +256,15 @@ function main() {
     # test v2ray configure file
     #/usr/bin/v2ray/v2ray -test -config=/etc/v2ray/config.json
 
+    systemctl restart nginx
+    systemctl restart v2ray
+
     yellow "(可选）设置防火墙,只允许ssh,http/s端口"
     ## Optional: Setting up firewall
     # install ufw
     yum install -y epel-release && yum install -y ufw
     # only enable necessary ports
     ufw disable && ufw allow ssh && ufw allow http && ufw allow https && ufw enable
-    systemctl restart nginx
-    systemctl restart v2ray
 
     green "客户端配置文件放置在http://${domain}/${rand_config_file_path}/config.json"
 }
